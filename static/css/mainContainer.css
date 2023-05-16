@@ -1,0 +1,39 @@
+/* class predefined */
+
+/* CSS */
+
+.core > .down > .mainContainer{
+    height: 100%;
+    padding: 5px;
+}
+
+.core > .down > .mainContainer > .up{
+    display: flex;
+    height: calc(100% - var(--core-down-mainContainer-down-height));
+}
+
+.core > .down > .mainContainer > .up > textarea{
+    width: 49%;
+    height: 100%;
+    margin: auto;
+    background-color: black;
+    padding: 5px;
+    color: white;
+    resize: none;
+}
+
+.core > .down > .mainContainer > .down{
+    display: flex;
+    height: var(--core-down-mainContainer-down-height);
+    text-align: center;
+}
+
+.core > .down > .mainContainer > .down > *{
+    margin: auto;
+}
+
+
+/* INTERACTIVE */
+
+
+/* MEDIA */

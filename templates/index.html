@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <link rel="stylesheet" href="static/css/variables.css">
+
+    <link rel="stylesheet" href="static/css/mainContainer.css">
+
     <link rel="stylesheet" href="static/css/core.css">
 
 
@@ -19,7 +22,16 @@
             <div class="clickable coreTab" id="chainTab">Chain</div>
         </div>
         <div class="down">
-
+            <div class="mainContainer" id="mainContainer">
+                <div class="up">
+                    <textarea id="chainInput" cols="30" rows="10" placeholder="Input"></textarea>
+                    <textarea id="chainOutput" cols="30" rows="10" placeholder="Output"></textarea>
+                </div>
+                <div class="down">
+                    <div class="clickable button" id="buttonRunChain">Run Chain</div>
+                    <div class="clickable button" id="buttonStopChain">Stop Chain</div>
+                </div>
+            </div>
         </div>
     </div>
 
