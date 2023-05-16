@@ -6,9 +6,12 @@ textarea,input{
 
 /* class predefined */
 
-.coreTab{
+.clickable{
     cursor: pointer;
     user-select: none;
+}
+
+.coreTab{
     margin: auto;
     border-bottom: 2px solid black;
     padding: 7px 10px;
