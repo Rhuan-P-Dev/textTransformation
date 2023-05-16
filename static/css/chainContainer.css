@@ -1,0 +1,62 @@
+/* class predefined */
+
+/* CSS */
+
+.core > .down > .chainContainer{
+    height: 100%;
+}
+
+.core > .down > .chainContainer > .up{
+    display: flex;
+    height: var(--core-down-chainContainer-up-height);
+    border-bottom: 4px solid black;
+}
+
+.core > .down > .chainContainer > .up > *{
+    margin: auto;
+}
+
+.core > .down > .chainContainer > .down{
+    height: calc(100% - var(--core-down-chainContainer-up-height));
+    overflow: auto;
+}
+
+.chainBlock{
+    border: 3px solid black;
+    margin: 10px 0px;
+}
+
+.chainBlock > .up{
+    text-align: center;
+}
+
+.chainBlock > .up > *{
+    padding: 5px;
+}
+
+.chainBlock > .up > .up > select{
+    text-align: center;
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+.chainBlock > .down > textarea{
+    width: 100%;
+    height: 100px;
+    resize: vertical;
+    padding: 5px;
+}
+
+
+/* INTERACTIVE */
+
+/* MEDIA */
+
+@media screen and (max-width: 650px){
+
+    .core > .down > .chainContainer > .up > *{
+        font-size: 15px;
+    }
+
+}
