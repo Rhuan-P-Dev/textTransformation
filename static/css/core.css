@@ -5,6 +5,12 @@ textarea,input,select{
     outline: 0;
 }
 
+textarea{
+    background-color: black;
+    padding: 5px;
+    color: white;
+}
+
 /* class predefined */
 
 .clickable{
