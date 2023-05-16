@@ -1,3 +1,11 @@
+/* variables */
+
+:root {
+    --core-up-height: 60px;
+    --core-down-mainContainer-down-height: 60px;
+}
+
+/* new default */
 
 textarea,input{
     box-shadow: 0 0 0 0;
@@ -43,10 +51,14 @@ html,body{
 .core > .up{
     display: flex;
     width: 100%;
+    height: var(--core-up-height);
     padding: 5px;
     border-bottom: 3px solid black;
 }
 
+.core > .down{
+    height: calc(100% - var(--core-up-height));
+}
 /* INTERACTIVE */
 
 .coreTab:hover{
@@ -54,4 +66,3 @@ html,body{
 }
 
 /* MEDIA */
-
