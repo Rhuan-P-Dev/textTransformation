@@ -1,4 +1,4 @@
-import { ContainerController } from "./ContainerController.js"
+import { ContainerController } from "./containerController.js"
 
 var Container = new ContainerController()
 
