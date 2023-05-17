@@ -8,9 +8,16 @@
 
     <link rel="stylesheet" href="static/css/mainContainer.css">
     <link rel="stylesheet" href="static/css/chainContainer.css">
+    <link rel="stylesheet" href="static/css/configContainer.css">
 
     <link rel="stylesheet" href="static/css/core.css">
 
+    <script src="static/js/globalFunctions.js"></script>
+    <script type="module" src="static/js/CORE/coreTabController.js"></script>
+    <script type="module" src="static/js/CORE/ContainerController.js"></script>
+
+    <!-- CORE -->
+    <script type="module" src="static/js/CORE/core.js"></script>
 
     <title>Text Transformation</title>
 </head>
@@ -33,6 +40,7 @@
                     <div class="clickable button" id="buttonStopChain">Stop Chain</div>
                 </div>
             </div>
+            <div class="configContainer" id="configContainer"></div>
             <div class="chainContainer" id="chainContainer">
                 <div class="up">
                     <div class="clickable button" id="buttonAddChainBlock">Add Chain Block</div>

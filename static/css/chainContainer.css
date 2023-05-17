@@ -4,6 +4,7 @@
 
 .core > .down > .chainContainer{
     height: 100%;
+    display: none;
 }
 
 .core > .down > .chainContainer > .up{
