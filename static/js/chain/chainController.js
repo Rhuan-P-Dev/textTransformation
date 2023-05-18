@@ -8,8 +8,12 @@ export class ChainController {
     }
 
     removeChainBlock(){
-        let lastNode = this.chainBox.childNodes[this.chainBox.childNodes.length-1]
-        lastNode.parentNode.removeChild(lastNode)
+        let lastChainBlock = Chain.getLastChainBlock()
+        lastChainBlock.parentNode.removeChild(lastChainBlock)
+    }
+
+    getLastChainBlock(){
+        return this.chainBox.childNodes[this.chainBox.childNodes.length-1]
     }
 
 }
