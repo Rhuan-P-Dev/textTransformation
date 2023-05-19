@@ -57,6 +57,10 @@ export class ChainController {
         Chain.addChainBlockToChain(tempChainNode)
     }
 
+    getTypeOfTask(chainBlock){
+        return chainBlock.childNodes[1].childNodes[1].childNodes[1].value
+    }
+
 }
 
 var Chain = new ChainController()
@@ -70,7 +74,8 @@ function ChainNode(element){
         send: Server.send,
         check: function(){
             
-            if(this.previous.input_output.value == ""){
+            if(this.previous.input_output.value == "" ||
+            Chain.getTypeOfTask(this.element) == "Type Of Task"){
                 return false
             }
 
