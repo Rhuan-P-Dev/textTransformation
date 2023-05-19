@@ -85,10 +85,14 @@ function ChainNode(element){
         init: function(){
             if(this.check()){
 
+                let prompt = promptsDataBase[Chain.getTypeOfTask(this.element)]
+                prompt = replacer(prompt, "{[DATA]}", this.get())
+                console.log(prompt)
+
                 this.callBack.input_output = this.input_output
                 this.callBack.next = this.next
 
-                this.send(this.get(),this.callBack)
+                this.send(prompt,this.callBack)
 
             }
         },

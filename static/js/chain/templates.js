@@ -1,13 +1,20 @@
 const chainBlockTemplate = `<div class="chainBlock" id="chainBlock">
     <div class="up">
         <div class="up">
-            <select class="clickable">
+            <select  class="clickable">
                 <option selected disabled>Type Of Task</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <optgroup label="=== Translation ===">
+                    <option>to PT-BR</option>
+                    <option>to English</option>
+                </optgroup>
+                <optgroup label="=== Analyzer ===">
+                    <option>Emotion Analyzer</option>
+                </optgroup>
+                <optgroup label="=== Extraction ===">
+                    <option>5 definitions</option>
+                    <option>10 words with similarity</option>
+                    <option>Summary</option>
+                </optgroup>
             </select>
         </div>
         <div class="mid">

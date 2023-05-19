@@ -8,3 +8,17 @@ function docReady(fn) {
         document.addEventListener("DOMContentLoaded", fn);
     }
 }
+
+function replacer(text, targetText, newText){
+
+    let oldText = ""
+
+    do{
+        oldText = text
+
+        text = text.replace(targetText, newText)
+
+    }while(text != oldText)
+    
+    return text
+}
