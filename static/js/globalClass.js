@@ -19,7 +19,7 @@ class CustomDoublyLinkedList{
         lastNode:true,
 
         element:document.getElementById("chainOutput"),
-        get: function(){this.previous.element.value},
+        get: function(){return this.previous.element.value},
         init: function(){
             this.element.innerHTML = this.get()
         },

@@ -1,3 +1,7 @@
+from modelController import ModelController
+
+Model = ModelController()
+
 import logging
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
@@ -21,9 +25,11 @@ def do_connect():
 @socketio.on('message')
 def get_message(msg):
     print("Data recieved:{0}".format(msg))
-    if(msg['cmd'] == "???"):
-        print(".")
-        #emit('from_server', {'cmd': '???', 'data':???})
+    if(msg['cmd'] == "sendToModel"):
+        Model.setPrompt(msg['data'])
+        Model.send()
+        emit('from_server', {'cmd': 'responseOfModel', 'data': Model.response()})
+
 
 if __name__ == "__main__":
     print("Server started!")

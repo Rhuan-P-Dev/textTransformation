@@ -11,6 +11,7 @@ export class UIController {
 
         buttonAddChainBlock.addEventListener("click",function(){
             Chain.addChainBlock()
+            Chain.addChainBlockToChain()
         })
 
         buttonRemoveChainBlock.addEventListener("click",function(){
