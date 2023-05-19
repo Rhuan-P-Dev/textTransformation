@@ -7,12 +7,12 @@ class ModelController:
 
     param = {
         'prompt': "1 + 1 =",
-        'max_new_tokens': 50,
+        'max_new_tokens': 250,
         'do_sample': True,
-        'temperature': 0.5,
-        'top_p': 0.85,
-        'typical_p': 0.85,
-        'repetition_penalty': 1.15,
+        'temperature': 0.6,
+        'top_p': 0.75,
+        'typical_p': 0.7,
+        'repetition_penalty': 1.17,
         'top_k': 35,
         'min_length': 0,
         'no_repeat_ngram_size': 0,
