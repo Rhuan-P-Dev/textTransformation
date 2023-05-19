@@ -4,7 +4,7 @@ class CustomDoublyLinkedList{
 
     firstNode = {
         protected: true,
-        element: document.getElementById("chainInput"),
+        input_output: document.getElementById("chainInput"),
 
         init: function(){
             this.next.init()
@@ -18,10 +18,10 @@ class CustomDoublyLinkedList{
         protected:true,
         lastNode:true,
 
-        element:document.getElementById("chainOutput"),
-        get: function(){return this.previous.element.value},
+        input_output:document.getElementById("chainOutput"),
+        get: function(){return this.previous.input_output.value},
         init: function(){
-            this.element.innerHTML = this.get()
+            this.input_output.value = this.get()
         },
 
         next:null,
