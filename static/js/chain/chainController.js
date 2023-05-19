@@ -20,6 +20,7 @@ export class ChainController {
     removeChainBlock(){
         let lastChainBlock = Chain.getLastChainBlock()
         lastChainBlock.parentNode.removeChild(lastChainBlock)
+        CHAIN.remove()
     }
 
     getLastChainBlock(){
