@@ -35,10 +35,15 @@ textarea{
     padding: 5px 10px;
 }
 
-.on_off{
+.onOff{
     display: inline-block;
     border: 1px solid gray;
     padding: 5px 10px;
+}
+
+.on{
+    color: white;
+    background-color: black;
 }
 
 /* CSS */
@@ -81,7 +86,7 @@ html,body{
     border: 2px solid white;
 }
 
-.on_off:hover{
+.onOff:hover{
     border: 1px solid white;
 }
 

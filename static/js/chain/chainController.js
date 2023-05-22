@@ -1,7 +1,9 @@
 
 import { ServerController } from "../serverController.js"
+import { OnOffController } from "../onOffController.js"
 
 var Server = new ServerController()
+var OnOff = new OnOffController()
 
 const CHAIN = new CustomDoublyLinkedList()
 
@@ -59,14 +61,21 @@ export class ChainController {
     initNewChainBlock(){
         Chain.addChainBlock()
 
+        OnOff.addTrigger(Chain.getOnOff(Chain.getLastChainBlock()))
+
         let tempChainNode = ChainNode(Chain.getLastChainBlock())
 
         Chain.addChainBlockOptionsTriggers(tempChainNode)
+
         Chain.addChainBlockToChain(tempChainNode)
     }
 
     getTypeOfTask(chainBlock){
         return chainBlock.childNodes[1].childNodes[1].childNodes[1].value
+    }
+
+    getOnOff(chainBlock){
+        return chainBlock.childNodes[1].childNodes[3].childNodes[1]
     }
 
 }
@@ -94,8 +103,16 @@ function ChainNode(element){
         init: function(){
             if(this.check()){
 
-                let prompt = promptsDataBase[Chain.getTypeOfTask(this.element)]
+                let typeOfTask = Chain.getTypeOfTask(this.element)
+
+                let prompt = promptsDataBase[typeOfTask]
+
+                if(OnOff.getOnOff(Chain.getOnOff(this.element)) == "on"){
+                    prompt = examplesDataBase[typeOfTask] + prompt
+                }
+
                 prompt = replacer(prompt, "{[DATA]}", this.get())
+
                 console.log(prompt)
 
                 this.callBack.input_output = this.input_output

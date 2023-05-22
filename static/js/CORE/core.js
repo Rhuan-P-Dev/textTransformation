@@ -1,3 +1,8 @@
+// GLOBAL
+import { OnOffController } from "../onOffController.js"
+
+var OnOff = ""
+
 // CHAIN
 import { UIController as UI_Chain_Controller} from "../chain/UIController.js"
 
@@ -14,6 +19,9 @@ import { CoreTabController } from "./coreTabController.js"
 var CoreTab = ""
 
 docReady(function(){
+    // GLOBAL
+    OnOff = new OnOffController()
+
     // CHAIN
     UI_Chain = new UI_Chain_Controller()
 
@@ -28,6 +36,9 @@ docReady(function(){
 })
 
 function browseInit(){
+    // GLOBA
+    OnOff.addTriggers()
+
     // CHAIN
     UI_Chain.addTriggers()
 

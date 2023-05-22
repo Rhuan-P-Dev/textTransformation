@@ -18,7 +18,7 @@ const chainBlockTemplate = `<div class="chainBlock" id="chainBlock">
             </select>
         </div>
         <div class="mid">
-            <div class="on_off clickable" id="on_off" state="off" title="Give examples for generic LLM to understand the task that needs to be executed.">Examples</div>
+            <div class="onOff clickable" id="onOff" state="off" title="Give examples for generic LLM to understand the task that needs to be executed.">Examples</div>
         </div>
         <div class="down">
             <div class="clickable button">Run Block</div>
