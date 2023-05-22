@@ -50,6 +50,7 @@ export class ChainController {
         let lastRunBlockButton = Chain.getRunBlockButton(Chain.getLastChainBlock())
 
         lastRunBlockButton.addEventListener("click",function(){
+            runChain = true
             ChainNode.init()
         })
 
