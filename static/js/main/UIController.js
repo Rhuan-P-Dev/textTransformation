@@ -5,7 +5,7 @@ var Chain = new ChainController()
 export class UIController {
 
     buttonRunChain = document.getElementById("buttonRunChain")
-    buttonStopChain = document.getElementById("buttonStopChain")
+    mainButtonStopChain = document.getElementById("mainButtonStopChain")
 
     addTriggers(){
 
@@ -13,7 +13,7 @@ export class UIController {
             Chain.runChain()
         })
 
-        buttonStopChain.addEventListener("click",function(){
+        mainButtonStopChain.addEventListener("click",function(){
             Chain.stopChain()
         })
     }
