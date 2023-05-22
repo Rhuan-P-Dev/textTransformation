@@ -13,6 +13,9 @@ export class UIController {
             Chain.runChain()
         })
 
+        buttonStopChain.addEventListener("click",function(){
+            Chain.stopChain()
+        })
     }
 
 }
