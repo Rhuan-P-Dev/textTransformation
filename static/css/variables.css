@@ -3,3 +3,14 @@
     --core-down-mainContainer-down-height: 60px;
     --core-down-chainContainer-up-height: 60px
 }
+
+
+/* MEDIA */
+
+@media screen and (max-width: 480px){
+
+    :root {
+        --core-down-chainContainer-up-height: 110px
+    }
+
+}
