@@ -5,6 +5,8 @@ var Server = new ServerController()
 
 const CHAIN = new CustomDoublyLinkedList()
 
+var runChain = true
+
 export class ChainController {
 
     chainBox = document.getElementById("chainBox")
@@ -36,7 +38,12 @@ export class ChainController {
     }
 
     runChain(){
+        runChain = true
         CHAIN.Chain.init()
+    }
+
+    stopChain(){
+        runChain = false
     }
 
     addChainBlockOptionsTriggers(ChainNode){
@@ -73,9 +80,10 @@ function ChainNode(element){
 
         send: Server.send,
         check: function(){
-            
+
             if(this.previous.input_output.value == "" ||
-            Chain.getTypeOfTask(this.element) == "Type Of Task"){
+            Chain.getTypeOfTask(this.element) == "Type Of Task" ||
+            !runChain){
                 return false
             }
 
