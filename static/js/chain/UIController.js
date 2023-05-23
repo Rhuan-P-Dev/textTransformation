@@ -10,15 +10,15 @@ export class UIController {
 
     addTriggers(){
 
-        buttonAddChainBlock.addEventListener("click",function(){
+        this.buttonAddChainBlock.addEventListener("click",function(){
             Chain.initNewChainBlock()
         })
 
-        buttonRemoveChainBlock.addEventListener("click",function(){
+        this.buttonRemoveChainBlock.addEventListener("click",function(){
             Chain.removeChainBlock()
         })
 
-        chainButtonStopChain.addEventListener("click",function(){
+        this.chainButtonStopChain.addEventListener("click",function(){
             Chain.stopChain()
         })
     }

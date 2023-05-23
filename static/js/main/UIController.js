@@ -9,11 +9,11 @@ export class UIController {
 
     addTriggers(){
 
-        buttonRunChain.addEventListener("click",function(){
+        this.buttonRunChain.addEventListener("click",function(){
             Chain.runChain()
         })
 
-        mainButtonStopChain.addEventListener("click",function(){
+        this.mainButtonStopChain.addEventListener("click",function(){
             Chain.stopChain()
         })
     }
