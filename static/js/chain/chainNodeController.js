@@ -32,10 +32,18 @@ export class ChainNodeController {
             previous: undefined,
     
             callBack: {
-                init: callBackInit,
+                element: element,
                 input_output: undefined,
+                
+                init: callBackInit,
+
                 next: undefined,
+
+                styleFinish: styleFinish,
             },
+
+            styleInit: styleInit,
+            styleCheckFail: styleCheckFail,
         
         }
     
@@ -62,6 +70,9 @@ function get(){
 }
 
 function init(){
+
+    this.styleInit()
+
     if(this.check()){
         
         let typeOfTask = Chain.getTypeOfTask(this.element)
@@ -81,6 +92,8 @@ function init(){
 
         this.send(prompt,this.callBack)
 
+    }else{
+        this.styleCheckFail()
     }
 }
 
@@ -89,17 +102,37 @@ function init(){
 
 
 
-
-
-
-
 function callBackInit(text){
+
+    this.styleFinish()
 
     this.input_output.value = text
     this.next.init()
 
 }
 
+
+
+
+
+
+
+
+
+
+function styleInit(){
+    this.element.style.border = "3px solid red"
+    this.next.styleInit()
+}
+
+function styleCheckFail(){
+    this.element.style.border = "3px solid black"
+    this.next.styleCheckFail()
+}
+
+function styleFinish(){
+    this.element.style.border = "3px solid green"
+}
 
 
 

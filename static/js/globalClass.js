@@ -26,6 +26,9 @@ class CustomDoublyLinkedList{
 
         next:null,
         previous:undefined,
+
+        styleInit:() => {},
+        styleCheckFail:() => {},
     }
 
     constructor(){
