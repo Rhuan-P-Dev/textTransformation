@@ -2,8 +2,15 @@
 import { ChainNodeController } from "./chainNodeController.js"
 import { OnOffController } from "../onOffController.js"
 
-var ChainNode = new ChainNodeController()
-var OnOff = new OnOffController()
+var ChainNode = ""
+var OnOff = ""
+
+docReady(function(){
+
+    ChainNode = new ChainNodeController()
+    OnOff = new OnOffController()
+
+})
 
 const CHAIN = new CustomDoublyLinkedList()
 

@@ -1,6 +1,12 @@
 import { ContainerController } from "./containerController.js"
 
-var Container = new ContainerController()
+var Container = ""
+
+docReady(function(){
+
+    Container = new ContainerController()
+
+})
 
 export class CoreTabController {
 

@@ -1,6 +1,12 @@
 import { ChainController } from "./chainController.js"
 
-var Chain = new ChainController()
+var Chain = ""
+
+docReady(function(){
+
+    Chain = new ChainController()
+
+})
 
 export class UIController {
 
