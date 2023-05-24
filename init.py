@@ -3,18 +3,18 @@ from modelController import ModelController
 Model = ModelController()
 
 import logging
-log = logging.getLogger('werkzeug')
+log = logging.getLogger("werkzeug")
 log.setLevel(logging.ERROR)
 
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 app = Flask(__name__)
-app.config['SECRET KEY'] = 'secret!'
-socketio = SocketIO(app)
+app.config["SECRET KEY"] = "secret!"
+socketio = SocketIO(app, ping_timeout=99999)
 
-@app.route('/')
+@app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
 
 
 @socketio.on("connect")
