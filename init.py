@@ -17,22 +17,24 @@ def index():
     return render_template('index.html')
 
 
-@socketio.on('connect')
+@socketio.on("connect")
 def do_connect():
     print("Client connected!")
-    emit('from_server', {'cmd': 'connected'})
+    emit("from_server", {"cmd": "connected"})
 
-@socketio.on('message')
+@socketio.on("message")
 def get_message(msg):
     print("Data recieved:{0}".format(msg))
-    if(msg['cmd'] == "sendToModel"):
-        Model.setPrompt(msg['data'])
+    if(msg["cmd"] == "sendToModel"):
+        Model.setParam("prompt", msg["data"])
         Model.send()
-        emit('from_server', {'cmd': 'responseOfModel', 'data': Model.response()})
+        emit("from_server", {"cmd": "responseOfModel", "data": Model.response()})
+    elif(msg["cmd"] == "setParam"):
+        Model.setParam(msg["data"]["param"], msg["data"]["value"])
 
 
 if __name__ == "__main__":
     print("Server started!")
     print("You may now connect with a browser at http://127.0.0.1:5020/")
-    socketio.run(app, host='0.0.0.0', port=5020)
+    socketio.run(app, host="0.0.0.0", port=5020)
     #socketio.run(app)

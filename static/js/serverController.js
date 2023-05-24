@@ -8,6 +8,10 @@ export class ServerController {
         chain_callback = callBack
     }
 
+    setParam(param, value){
+        socket.send({"cmd": "setParam", "data":{"param":param,"value":value}})
+    }
+
 }
 
 socket.on('from_server', function(msg) {

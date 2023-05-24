@@ -32,6 +32,10 @@
     <script type="module" src="static/js/chain/chainController.js"></script>
     <script type="module" src="static/js/chain/chainNodeController.js"></script>
 
+    <!-- CONFIG -->
+    <script type="module" src="static/js/config/configBoxController.js"></script>
+    <script type="module" src="static/js/config/paramBoxSliderController.js"></script>
+
     <!-- MAIN -->
     <script type="module" src="static/js/main/UIController.js"></script>
 
@@ -62,7 +66,149 @@
                     <div class="clickable button" id="mainButtonStopChain">Stop Chain</div>
                 </div>
             </div>
-            <div class="configContainer" id="configContainer"></div>
+            <div class="configContainer" id="configContainer">
+                <div class="configBox" state="closed">
+                    <div class="up clickable">
+                        <p>Model Parameters</p>
+                    </div>
+                    <div class="down" style="display: none;">
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>Max New Tokens</p>
+                            </div>
+                            <div class="mid">
+                                <p>300</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="1" max="2048" value="300" step="1" typeOfParam="max_new_tokens">
+                            </div>
+                        </div>
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>Temperature</p>
+                            </div>
+                            <div class="mid">
+                                <p>0.5</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="0.01" max="3" value="0.5" step="0.01" typeOfParam="temperature">
+                            </div>
+                        </div>
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>Top P</p>
+                            </div>
+                            <div class="mid">
+                                <p>0.9</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="0.01" max="1" value="0.9" step="0.01" typeOfParam="top_p">
+                            </div>
+                        </div>
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>Top K</p>
+                            </div>
+                            <div class="mid">
+                                <p>50</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="0" max="200" value="50" step="1" typeOfParam="top_k">
+                            </div>
+                        </div>
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>Typical P</p>
+                            </div>
+                            <div class="mid">
+                                <p>0.9</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="0.01" max="1" value="0.9" step="0.01" typeOfParam="typical_p">
+                            </div>
+                        </div>
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>Repetition Penalty</p>
+                            </div>
+                            <div class="mid">
+                                <p>1.15</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="1" max="4" value="1.15" step="0.01" typeOfParam="repetition_penalty">
+                            </div>
+                        </div>
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>Epsilon Cutoff</p>
+                            </div>
+                            <div class="mid">
+                                <p>0</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="0" max="9" value="0" step="0.01" typeOfParam="epsilon_cutoff">
+                            </div>
+                        </div>
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>Eta Cutoff</p>
+                            </div>
+                            <div class="mid">
+                                <p>0</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="0" max="20" value="0" step="0.01" typeOfParam="eta_cutoff">
+                            </div>
+                        </div>
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>Mirostat Mode</p>
+                            </div>
+                            <div class="mid">
+                                <p>0</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="0" max="2" value="0" step="1" typeOfParam="mirostat_mode">
+                            </div>
+                        </div>
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>Mirostat Tau</p>
+                            </div>
+                            <div class="mid">
+                                <p>5</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="0" max="10" value="5" step="0.01" typeOfParam="mirostat_tau">
+                            </div>
+                        </div>
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>Mirostat Eta</p>
+                            </div>
+                            <div class="mid">
+                                <p>0.1</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="0" max="1" value="0.1" step="0.01" typeOfParam="mirostat_eta">
+                            </div>
+                        </div>
+
+                        <div class="paramBoxSlider w100">
+                            <div class="up">
+                                <p>Max Prompt Length - In Tokens</p>
+                            </div>
+                            <div class="mid">
+                                <p>2048</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="128" max="131072" value="2048" step="64" typeOfParam="truncation_length">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
             <div class="chainContainer" id="chainContainer">
                 <div class="up">
                     <div>

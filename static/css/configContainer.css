@@ -4,8 +4,63 @@
 
 .core > .down > .configContainer{
     display: none;
+    height: calc(100vh - var(--core-up-height));
+    overflow-y: auto;
+}
+
+.core > .down > .configContainer > .configBox > .up{
+    text-align: center;
+    border: 3px solid black;
+}
+
+.core > .down > .configContainer > .configBox > .up > p{
+    font-size: 30px;
+    padding: 10px;
+}
+
+.core > .down > .configContainer > .configBox > .down{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.paramBoxSlider{
+    width: 25%;
+    border: 3px solid black;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.paramBoxSlider > *{
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.paramBoxSlider > .down > input{
+    width: 100%;
+    cursor: pointer;
 }
 
 /* INTERACTIVE */
 
+.core > .down > .configContainer > .configBox > .up:hover{
+    border: 3px solid white;
+}
+
 /* MEDIA */
+
+@media screen and (max-width: 900px){
+
+    .paramBoxSlider{
+        width: 50%;
+    }
+
+}
+
+@media screen and (max-width: 600px){
+
+    .paramBoxSlider{
+        width: 100%;
+    }
+
+}
