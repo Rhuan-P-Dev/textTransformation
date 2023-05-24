@@ -3,8 +3,11 @@ var chain_callback = {}
 
 export class ServerController {
 
-    send(text,callBack){
+    send(text){
         socket.send({"cmd": "sendToModel", "data":text})
+    }
+
+    setCallBack(callBack){
         chain_callback = callBack
     }
 

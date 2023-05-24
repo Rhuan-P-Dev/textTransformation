@@ -24,6 +24,8 @@ export class ChainNodeController {
             input_output: Chain.getOutputChainBlock(element),
     
             send: Server.send,
+            setCallBack: Server.setCallBack,
+
             check: check,
             get: get,
             init: init,
@@ -90,7 +92,9 @@ function init(){
         this.callBack.input_output = this.input_output
         this.callBack.next = this.next
 
-        this.send(prompt,this.callBack)
+        this.setCallBack(this.callBack)
+        this.send(prompt)
+
 
     }else{
         this.styleCheckFail()
