@@ -30,7 +30,7 @@ class ModelController:
         'truncation_length': 2048,
         'ban_eos_token': False,
         'skip_special_tokens': True,
-        'stopping_strings': []
+        'stopping_strings': ["\n{[STOP]}"]
     }
 
     def send(self):
