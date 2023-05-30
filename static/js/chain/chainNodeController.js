@@ -93,12 +93,19 @@ function init(){
         this.callBack.next = this.next
 
         this.setCallBack(this.callBack)
-        this.send(prompt)
 
+        prompt = promptCleaner(prompt)
+
+        this.send(prompt)
 
     }else{
         this.styleCheckFail()
     }
+}
+
+function promptCleaner(prompt){
+    prompt = replacer(prompt, "\\", "")
+    return prompt
 }
 
 
@@ -110,11 +117,18 @@ function callBackInit(text){
 
     this.styleFinish()
 
+    text = callBackCleaner(text)
+
     this.input_output.value = text
     this.next.init()
 
 }
 
+function callBackCleaner(text){
+    text = replacer(text, "]]]", "")
+    text = replacer(text, "[[[", "")
+    return text
+}
 
 
 
@@ -137,8 +151,3 @@ function styleCheckFail(){
 function styleFinish(){
     this.element.style.border = "3px solid green"
 }
-
-
-
-
-var ChainNode = new ChainNodeController()
