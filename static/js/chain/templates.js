@@ -11,7 +11,7 @@ const chainBlockTemplate = `<div class="chainBlock" id="chainBlock">
                     <option>Emotion Analyzer</option>
                 </optgroup>
                 <optgroup label="=== Extraction ===">
-                    <option>5 definitions</option>
+                    <option>Some Definition</option>
                     <option>10 words with similarity</option>
                     <option>Summary</option>
                 </optgroup>

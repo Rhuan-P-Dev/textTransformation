@@ -8,11 +8,11 @@ const promptsDataBase = {
     "Emotion Analyzer":`### Instruction: I will write a text and I want you to tell me what emotion it conveys: [[[{[DATA]}]]]
 ### Assistant: The emotions conveyed in this text are`,
 
-    "5 definitions":`### Instruction: Give me the 5 definitions of {[DATA]}.
+    "Some Definition":`### Instruction: Give me some definition of {[DATA]}.
 ### Assistant:`,
     "10 words with similarity":`### Instruction: Give me the 10 words with similarity of {[DATA]}. 1-10.
 ### Assistant: Sure, here are ten words that have a similar meaning to "{[DATA]}": `,
-    "Summary":`### Instruction: make a summary of this data: [[[{[DATA]}]]]
-### Assistant:`,
+    "Summary":`### Instruction: Make a summary of this in 3 points: [[[{[DATA]}]]]
+### Assistant: Here is my summary of the above content:`,
 
 }
