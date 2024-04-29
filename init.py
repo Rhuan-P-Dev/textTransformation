@@ -36,5 +36,5 @@ def get_message(msg):
 if __name__ == "__main__":
     print("Server started!")
     print("You may now connect with a browser at http://127.0.0.1:5020/")
-    socketio.run(app, host="0.0.0.0", port=5020)
+    socketio.run(app, host="127.0.0.1", port=5020)
     #socketio.run(app)
