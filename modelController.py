@@ -2,12 +2,17 @@ import requests
 
 class ModelController:
    
-    url = 'http://localhost:5000/api/v1/generate'
+    url = "http://localhost:5001/v1/completions"
+
+    headers = {
+        "Content-Type": "application/json"
+    }
+
     modelResponse = " ?2?"
 
     param = {
         'prompt': "1 + 1 =",
-        'max_new_tokens': 300,
+        'max_tokens': 300,
         'do_sample': True,
         'temperature': 0.5,
         'top_p': 0.9,
@@ -30,15 +35,16 @@ class ModelController:
         'truncation_length': 2048,
         'ban_eos_token': False,
         'skip_special_tokens': True,
-        'stopping_strings': ["\n{[STOP]}"]
+        'stopping_strings': ["\n{[STOP]}"],
+        'stop_sequence': ["\n{[STOP]}"]
     }
 
     def send(self):
 
-        response = requests.post(self.url, json=self.param)
+        response = requests.post(self.url, headers=self.headers, json=self.param, verify=False, stream=False)
 
         if response.status_code == 200:
-            self.modelResponse = response.json()["results"][0]["text"]
+            self.modelResponse = response.json()["choices"][0]["text"]
 
     def response(self):
         return self.modelResponse
