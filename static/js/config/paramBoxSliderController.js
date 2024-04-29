@@ -19,7 +19,10 @@ export class ParamBoxSliderController{
 
             this.allParamBoxSlider[index].childNodes[5].childNodes[1].addEventListener("input", function(){
                 updateCurrentValue(this)
-                Server.setParam(this.getAttribute("typeOfParam"),this.value)
+                Server.setParam(
+                    this.getAttribute("typeOfParam"),
+                    parseFloat(this.value)
+                )
             })
 
         }
