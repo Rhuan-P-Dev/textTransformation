@@ -1,19 +1,18 @@
 import requests
 
 class ModelController:
-   
-    url = "http://localhost:5001/v1/completions"
 
     headers = {
         "Content-Type": "application/json"
     }
 
-    modelResponse = " ?2?"
-
     param = {
+
+        "url": "http://localhost:5001/v1/completions",
+        "modelResponse": "?2?",
+
         "max_context_length": 8192,
         "max_length": 150,
-        "prompt": "?2?",
         "rep_pen": 1.05,
         "rep_pen_range": 1024,
         "sampler_order": [6, 0, 1, 3, 4, 2, 5],
@@ -43,13 +42,19 @@ class ModelController:
 
     def send(self):
 
-        response = requests.post(self.url, headers=self.headers, json=self.param, verify=False, stream=False)
+        response = requests.post(
+            self.param["url"],
+            headers=self.headers,
+            json=self.param,
+            verify=False,
+            stream=False
+        )
 
         if response.status_code == 200:
-            self.modelResponse = response.json()["choices"][0]["text"]
+            self.param["modelResponse"] = response.json()["choices"][0]["text"]
 
     def response(self):
-        return self.modelResponse
+        return self.param["modelResponse"]
 
     def setParam(self, param, value):
         self.param[param] = value
