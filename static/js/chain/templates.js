@@ -1,4 +1,4 @@
-const chainBlockTemplate = `<div class="chainBlock" id="chainBlock">
+const blockChainTemplate = `<div class="blockChain" id="blockChain">
     <div class="up">
         <div class="up">
             <select  class="clickable">

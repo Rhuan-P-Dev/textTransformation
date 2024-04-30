@@ -29,27 +29,27 @@
     overflow: auto;
 }
 
-.chainBlock{
+.blockChain{
     border: 3px solid black;
     margin: 10px 0px;
 }
 
-.chainBlock > .up{
+.blockChain > .up{
     text-align: center;
 }
 
-.chainBlock > .up > *{
+.blockChain > .up > *{
     padding: 5px;
 }
 
-.chainBlock > .up > .up > select{
+.blockChain > .up > .up > select{
     text-align: center;
     width: 100%;
     background-color: black;
     color: white;
 }
 
-.chainBlock > .down > textarea{
+.blockChain > .down > textarea{
     width: 100%;
     height: 100px;
     resize: vertical;

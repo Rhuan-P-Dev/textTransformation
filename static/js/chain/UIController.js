@@ -10,18 +10,18 @@ docReady(function(){
 
 export class UIController {
 
-    buttonAddChainBlock = document.getElementById("buttonAddChainBlock")
+    buttonAddBlockChain = document.getElementById("buttonAddBlockChain")
     chainButtonStopChain = document.getElementById("chainButtonStopChain")
-    buttonRemoveChainBlock = document.getElementById("buttonRemoveChainBlock")
+    buttonRemoveBlockChain = document.getElementById("buttonRemoveBlockChain")
 
     addTriggers(){
 
-        this.buttonAddChainBlock.addEventListener("click",function(){
-            Chain.initNewChainBlock()
+        this.buttonAddBlockChain.addEventListener("click",function(){
+            Chain.initNewBlockChain()
         })
 
-        this.buttonRemoveChainBlock.addEventListener("click",function(){
-            Chain.removeChainBlock()
+        this.buttonRemoveBlockChain.addEventListener("click",function(){
+            Chain.removeBlockChain()
         })
 
         this.chainButtonStopChain.addEventListener("click",function(){
