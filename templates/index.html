@@ -77,10 +77,10 @@
                                 <p>Max New Tokens</p>
                             </div>
                             <div class="mid">
-                                <p>300</p>
+                                <p>150</p>
                             </div>
                             <div class="down">
-                                <input type="range" class="customSlider" min="1" max="2048" value="300" step="1" typeOfParam="max_tokens">
+                                <input type="range" class="customSlider" min="1" max="2048" value="150" step="1" typeOfParam="max_tokens">
                             </div>
                         </div>
                         <div class="paramBoxSlider">
@@ -94,15 +94,50 @@
                                 <input type="range" class="customSlider" min="0.01" max="3" value="0.5" step="0.01" typeOfParam="temperature">
                             </div>
                         </div>
+
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>Min P</p>
+                            </div>
+                            <div class="mid">
+                                <p>0.1</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="0" max="1" value="0.1" step="0.01" typeOfParam="min_p">
+                            </div>
+                        </div>
+
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>TFS</p>
+                            </div>
+                            <div class="mid">
+                                <p>1</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="0" max="1" value="1" step="0.01" typeOfParam="tfs">
+                            </div>
+                        </div>
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>Top A</p>
+                            </div>
+                            <div class="mid">
+                                <p>0.5</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="0" max="1" value="0.5" step="0.01" typeOfParam="top_a">
+                            </div>
+                        </div>
                         <div class="paramBoxSlider">
                             <div class="up">
                                 <p>Top P</p>
                             </div>
                             <div class="mid">
-                                <p>0.9</p>
+                                <p>1</p>
                             </div>
                             <div class="down">
-                                <input type="range" class="customSlider" min="0.01" max="1" value="0.9" step="0.01" typeOfParam="top_p">
+                                <input type="range" class="customSlider" min="0.01" max="1" value="1" step="0.01" typeOfParam="top_p">
                             </div>
                         </div>
                         <div class="paramBoxSlider">
@@ -110,10 +145,10 @@
                                 <p>Top K</p>
                             </div>
                             <div class="mid">
-                                <p>50</p>
+                                <p>0</p>
                             </div>
                             <div class="down">
-                                <input type="range" class="customSlider" min="0" max="200" value="50" step="1" typeOfParam="top_k">
+                                <input type="range" class="customSlider" min="0" max="200" value="0" step="1" typeOfParam="top_k">
                             </div>
                         </div>
                         <div class="paramBoxSlider">
@@ -121,10 +156,10 @@
                                 <p>Typical P</p>
                             </div>
                             <div class="mid">
-                                <p>0.9</p>
+                                <p>1</p>
                             </div>
                             <div class="down">
-                                <input type="range" class="customSlider" min="0.01" max="1" value="0.9" step="0.01" typeOfParam="typical_p">
+                                <input type="range" class="customSlider" min="0.01" max="1" value="1" step="0.01" typeOfParam="typical_p">
                             </div>
                         </div>
                         <div class="paramBoxSlider">
@@ -132,34 +167,13 @@
                                 <p>Repetition Penalty</p>
                             </div>
                             <div class="mid">
-                                <p>1.15</p>
+                                <p>1.05</p>
                             </div>
                             <div class="down">
-                                <input type="range" class="customSlider" min="1" max="4" value="1.15" step="0.01" typeOfParam="repetition_penalty">
+                                <input type="range" class="customSlider" min="1" max="4" value="1.05" step="0.01" typeOfParam="repetition_penalty">
                             </div>
                         </div>
-                        <div class="paramBoxSlider">
-                            <div class="up">
-                                <p>Epsilon Cutoff</p>
-                            </div>
-                            <div class="mid">
-                                <p>0</p>
-                            </div>
-                            <div class="down">
-                                <input type="range" class="customSlider" min="0" max="9" value="0" step="0.01" typeOfParam="epsilon_cutoff">
-                            </div>
-                        </div>
-                        <div class="paramBoxSlider">
-                            <div class="up">
-                                <p>Eta Cutoff</p>
-                            </div>
-                            <div class="mid">
-                                <p>0</p>
-                            </div>
-                            <div class="down">
-                                <input type="range" class="customSlider" min="0" max="20" value="0" step="0.01" typeOfParam="eta_cutoff">
-                            </div>
-                        </div>
+                      
                         <div class="paramBoxSlider">
                             <div class="up">
                                 <p>Mirostat Mode</p>
@@ -182,15 +196,40 @@
                                 <input type="range" class="customSlider" min="0" max="10" value="5" step="0.01" typeOfParam="mirostat_tau">
                             </div>
                         </div>
+
                         <div class="paramBoxSlider">
                             <div class="up">
-                                <p>Mirostat Eta</p>
+                                <p>Dynatemp Range</p>
                             </div>
                             <div class="mid">
-                                <p>0.1</p>
+                                <p>0</p>
                             </div>
                             <div class="down">
-                                <input type="range" class="customSlider" min="0" max="1" value="0.1" step="0.01" typeOfParam="mirostat_eta">
+                                <input type="range" class="customSlider" min="0" max="1" value="0" step="1" typeOfParam="dynatemp_range">
+                            </div>
+                        </div>
+
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>Smoothing Factor</p>
+                            </div>
+                            <div class="mid">
+                                <p>0</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="0" max="100" value="0" step="0.01" typeOfParam="smoothing_factor">
+                            </div>
+                        </div>
+
+                        <div class="paramBoxSlider">
+                            <div class="up">
+                                <p>Dynatemp Exponent</p>
+                            </div>
+                            <div class="mid">
+                                <p>1</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="0" max="100" value="1" step="0.01" typeOfParam="dynatemp_exponent">
                             </div>
                         </div>
 
@@ -199,10 +238,10 @@
                                 <p>Max Prompt Length - In Tokens</p>
                             </div>
                             <div class="mid">
-                                <p>2048</p>
+                                <p>8192</p>
                             </div>
                             <div class="down">
-                                <input type="range" class="customSlider" min="128" max="131072" value="2048" step="64" typeOfParam="truncation_length">
+                                <input type="range" class="customSlider" min="128" max="131072" value="8192" step="64" typeOfParam="max_context_length">
                             </div>
                         </div>
 
