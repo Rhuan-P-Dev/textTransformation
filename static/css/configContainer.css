@@ -24,19 +24,19 @@
     padding: 10px;
 }
 
-.paramBoxSlider{
+.paramBox{
     width: 25%;
     border: 3px solid black;
     margin: 10px auto;
     text-align: center;
 }
 
-.paramBoxSlider > *{
+.paramBox > *{
     padding: 5px;
     border: 1px solid black;
 }
 
-.paramBoxSlider > .down > input{
+.paramBox > .down > input{
     width: 100%;
     cursor: pointer;
 }
@@ -51,7 +51,7 @@
 
 @media screen and (max-width: 900px){
 
-    .paramBoxSlider{
+    .paramBox{
         width: 50%;
     }
 
@@ -59,7 +59,7 @@
 
 @media screen and (max-width: 600px){
 
-    .paramBoxSlider{
+    .paramBox{
         width: 100%;
     }
 
