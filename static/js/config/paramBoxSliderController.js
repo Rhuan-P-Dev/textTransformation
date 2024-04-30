@@ -12,6 +12,7 @@ docReady(function(){
 export class ParamBoxSliderController{
 
     allParamBoxSlider = document.querySelectorAll(".paramBoxSlider")
+    allParamBoxText = document.querySelectorAll(".paramBoxText")
 
     addTriggers(){
         
@@ -22,6 +23,17 @@ export class ParamBoxSliderController{
                 Server.setParam(
                     this.getAttribute("typeOfParam"),
                     parseFloat(this.value)
+                )
+            })
+
+        }
+
+        for (let index = 0; index < this.allParamBoxText.length; index++) {
+
+            this.allParamBoxText[index].childNodes[3].childNodes[1].addEventListener("keyup", function(){
+                Server.setParam(
+                    this.getAttribute("typeOfParam"),
+                    this.value
                 )
             })
 

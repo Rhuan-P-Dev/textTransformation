@@ -39,6 +39,8 @@
 .paramBox > .down > input{
     width: 100%;
     cursor: pointer;
+    background-color: black;
+    color: white;
 }
 
 /* INTERACTIVE */

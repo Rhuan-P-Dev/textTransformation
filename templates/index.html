@@ -69,10 +69,25 @@
             <div class="configContainer" id="configContainer">
                 <div class="configBox" state="closed">
                     <div class="up clickable">
+                        <p>API Parameters</p>
+                    </div>
+                    <div class="down" style="display: none;">
+                        <div class="paramBox paramBoxText">
+                            <div class="up">
+                                <p>URL</p>
+                            </div>
+                            <div class="down">
+                                <input type="text" id="urlInput" value="http://localhost:5001/v1/completions" typeOfParam="url">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="configBox" state="closed">
+                    <div class="up clickable">
                         <p>Model Parameters</p>
                     </div>
                     <div class="down" style="display: none;">
-                        <div class="paramBoxSlider">
+                        <div class="paramBox paramBoxSlider">
                             <div class="up">
                                 <p>Max New Tokens</p>
                             </div>
@@ -83,7 +98,7 @@
                                 <input type="range" class="customSlider" min="1" max="2048" value="150" step="1" typeOfParam="max_tokens">
                             </div>
                         </div>
-                        <div class="paramBoxSlider">
+                        <div class="paramBox paramBoxSlider">
                             <div class="up">
                                 <p>Temperature</p>
                             </div>
@@ -95,7 +110,7 @@
                             </div>
                         </div>
 
-                        <div class="paramBoxSlider">
+                        <div class="paramBox paramBoxSlider">
                             <div class="up">
                                 <p>Min P</p>
                             </div>
@@ -107,7 +122,7 @@
                             </div>
                         </div>
 
-                        <div class="paramBoxSlider">
+                        <div class="paramBox paramBoxSlider">
                             <div class="up">
                                 <p>TFS</p>
                             </div>
@@ -118,7 +133,7 @@
                                 <input type="range" class="customSlider" min="0" max="1" value="1" step="0.01" typeOfParam="tfs">
                             </div>
                         </div>
-                        <div class="paramBoxSlider">
+                        <div class="paramBox paramBoxSlider">
                             <div class="up">
                                 <p>Top A</p>
                             </div>
@@ -129,7 +144,7 @@
                                 <input type="range" class="customSlider" min="0" max="1" value="0.5" step="0.01" typeOfParam="top_a">
                             </div>
                         </div>
-                        <div class="paramBoxSlider">
+                        <div class="paramBox paramBoxSlider">
                             <div class="up">
                                 <p>Top P</p>
                             </div>
@@ -140,7 +155,7 @@
                                 <input type="range" class="customSlider" min="0.01" max="1" value="1" step="0.01" typeOfParam="top_p">
                             </div>
                         </div>
-                        <div class="paramBoxSlider">
+                        <div class="paramBox paramBoxSlider">
                             <div class="up">
                                 <p>Top K</p>
                             </div>
@@ -151,7 +166,7 @@
                                 <input type="range" class="customSlider" min="0" max="200" value="0" step="1" typeOfParam="top_k">
                             </div>
                         </div>
-                        <div class="paramBoxSlider">
+                        <div class="paramBox paramBoxSlider">
                             <div class="up">
                                 <p>Typical P</p>
                             </div>
@@ -162,7 +177,7 @@
                                 <input type="range" class="customSlider" min="0.01" max="1" value="1" step="0.01" typeOfParam="typical_p">
                             </div>
                         </div>
-                        <div class="paramBoxSlider">
+                        <div class="paramBox paramBoxSlider">
                             <div class="up">
                                 <p>Repetition Penalty</p>
                             </div>
@@ -174,7 +189,7 @@
                             </div>
                         </div>
                       
-                        <div class="paramBoxSlider">
+                        <div class="paramBox paramBoxSlider">
                             <div class="up">
                                 <p>Mirostat Mode</p>
                             </div>
@@ -185,7 +200,7 @@
                                 <input type="range" class="customSlider" min="0" max="2" value="0" step="1" typeOfParam="mirostat_mode">
                             </div>
                         </div>
-                        <div class="paramBoxSlider">
+                        <div class="paramBox paramBoxSlider">
                             <div class="up">
                                 <p>Mirostat Tau</p>
                             </div>
@@ -197,7 +212,7 @@
                             </div>
                         </div>
 
-                        <div class="paramBoxSlider">
+                        <div class="paramBox paramBoxSlider">
                             <div class="up">
                                 <p>Dynatemp Range</p>
                             </div>
@@ -209,7 +224,7 @@
                             </div>
                         </div>
 
-                        <div class="paramBoxSlider">
+                        <div class="paramBox paramBoxSlider">
                             <div class="up">
                                 <p>Smoothing Factor</p>
                             </div>
@@ -221,7 +236,7 @@
                             </div>
                         </div>
 
-                        <div class="paramBoxSlider">
+                        <div class="paramBox paramBoxSlider">
                             <div class="up">
                                 <p>Dynatemp Exponent</p>
                             </div>
@@ -233,7 +248,7 @@
                             </div>
                         </div>
 
-                        <div class="paramBoxSlider w100">
+                        <div class="paramBox paramBoxSlider w100">
                             <div class="up">
                                 <p>Max Prompt Length - In Tokens</p>
                             </div>
