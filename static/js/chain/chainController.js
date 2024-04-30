@@ -18,30 +18,30 @@ export class ChainController {
 
     chainBox = document.getElementById("chainBox")
 
-    addChainBlock(){
-        this.chainBox.insertAdjacentHTML("beforeend",chainBlockTemplate)
+    addBlockChain(){
+        this.chainBox.insertAdjacentHTML("beforeend",blockChainTemplate)
     }
 
-    addChainBlockToChain(ChainNode){
+    addBlockChainToChain(ChainNode){
         CHAIN.add(ChainNode)
     }
 
-    removeChainBlock(){
-        let lastChainBlock = Chain.getLastChainBlock()
-        lastChainBlock.parentNode.removeChild(lastChainBlock)
+    removeBlockChain(){
+        let lastBlockChain = Chain.getLastBlockChain()
+        lastBlockChain.parentNode.removeChild(lastBlockChain)
         CHAIN.remove()
     }
 
-    getLastChainBlock(){
+    getLastBlockChain(){
         return this.chainBox.childNodes[this.chainBox.childNodes.length-1]
     }
 
-    getOutputChainBlock(chainBlock){
-        return chainBlock.childNodes[3].childNodes[1]
+    getOutputBlockChain(blockChain){
+        return blockChain.childNodes[3].childNodes[1]
     }
 
-    getRunBlockButton(chainBlock){
-        return chainBlock.childNodes[1].childNodes[5]
+    getRunBlockButton(blockChain){
+        return blockChain.childNodes[1].childNodes[5]
     }
 
     runChain(){
@@ -53,8 +53,8 @@ export class ChainController {
         runChain = false
     }
 
-    addChainBlockOptionsTriggers(ChainNode){
-        let lastRunBlockButton = Chain.getRunBlockButton(Chain.getLastChainBlock())
+    addBlockChainOptionsTriggers(ChainNode){
+        let lastRunBlockButton = Chain.getRunBlockButton(Chain.getLastBlockChain())
 
         lastRunBlockButton.addEventListener("click",function(){
             runChain = true
@@ -63,24 +63,24 @@ export class ChainController {
 
     }
 
-    initNewChainBlock(){
-        Chain.addChainBlock()
+    initNewBlockChain(){
+        Chain.addBlockChain()
 
-        OnOff.addTrigger(Chain.getOnOff(Chain.getLastChainBlock()))
+        OnOff.addTrigger(Chain.getOnOff(Chain.getLastBlockChain()))
 
-        let tempChainNode = ChainNode.newChainNode(Chain.getLastChainBlock())
+        let tempChainNode = ChainNode.newChainNode(Chain.getLastBlockChain())
 
-        Chain.addChainBlockOptionsTriggers(tempChainNode)
+        Chain.addBlockChainOptionsTriggers(tempChainNode)
 
-        Chain.addChainBlockToChain(tempChainNode)
+        Chain.addBlockChainToChain(tempChainNode)
     }
 
-    getTypeOfTask(chainBlock){
-        return chainBlock.childNodes[1].childNodes[1].childNodes[1].value
+    getTypeOfTask(blockChain){
+        return blockChain.childNodes[1].childNodes[1].childNodes[1].value
     }
 
-    getOnOff(chainBlock){
-        return chainBlock.childNodes[1].childNodes[3].childNodes[1]
+    getOnOff(blockChain){
+        return blockChain.childNodes[1].childNodes[3].childNodes[1]
     }
 
 }

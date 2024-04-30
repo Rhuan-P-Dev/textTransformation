@@ -21,7 +21,7 @@ export class ChainNodeController {
 
         let newNode = {
             element: element,
-            input_output: Chain.getOutputChainBlock(element),
+            input_output: Chain.getOutputBlockChain(element),
     
             send: Server.send,
             setCallBack: Server.setCallBack,
