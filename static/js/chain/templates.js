@@ -18,7 +18,9 @@ const blockChainTemplate = `<div class="blockChain" id="blockChain">
             </select>
         </div>
         <div class="mid">
+        <!--
             <div class="onOff clickable" id="onOff" state="off" title="Give examples for generic LLM to understand the task that needs to be executed.">Examples</div>
+        -->
         </div>
         <div class="down">
             <div class="clickable button">Run Block</div>

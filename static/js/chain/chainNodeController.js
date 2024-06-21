@@ -2,16 +2,19 @@
 import { ServerController } from "../serverController.js"
 import { ChainController } from "./chainController.js"
 import { OnOffController } from "../onOffController.js"
+import { CloneController } from "../utils/clone.js"
 
 var OnOff = ""
 var Server = ""
 var Chain = ""
+var Clone
 
 docReady(function(){
 
     Server = new ServerController()
     Chain = new ChainController()
     OnOff = new OnOffController()
+    Clone = new CloneController()
 
 })
 
@@ -79,20 +82,28 @@ function init(){
         
         let typeOfTask = Chain.getTypeOfTask(this.element)
 
-        let prompt = promptsDataBase[typeOfTask]
+        let prompt = Clone.recursiveCloneAttribute(promptsDataBase[typeOfTask])
 
-        if(OnOff.getOnOff(Chain.getOnOff(this.element)) == "on"){
-            prompt = examplesDataBase[typeOfTask] + prompt
-        }
+        //if(OnOff.getOnOff(Chain.getOnOff(this.element)) == "on"){
+            //prompt = examplesDataBase[typeOfTask] + prompt
+        //}
 
-        prompt = replacer(prompt, "{[DATA]}", this.get())
+        prompt[0]["content"] = replacer(
+            prompt[0]["content"],
+            "{[DATA]}",
+            promptCleaner(this.get())
+        )
+
+        prompt[1]["content"] = replacer(
+            prompt[1]["content"],
+            "{[DATA]}",
+            promptCleaner(this.get())
+        )
 
         this.callBack.input_output = this.input_output
         this.callBack.next = this.next
 
         this.setCallBack(this.callBack)
-
-        prompt = promptCleaner(prompt)
 
         this.send(prompt)
 
@@ -102,8 +113,7 @@ function init(){
 }
 
 function promptCleaner(prompt){
-    prompt = replacer(prompt, "\\", "")
-    return prompt
+    return replacer(prompt, "\\", "")
 }
 
 

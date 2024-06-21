@@ -1,22 +1,24 @@
 import requests
+import json
 
 class ModelController:
 
     headers = {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
     }
+
+    assistantResponse = "?2?"
 
     param = {
 
-        "url": "http://localhost:5001/v1/completions",
-        "modelResponse": "?2?",
-
+        "url": "http://localhost:8080/v1/chat/completions",
+        "messages": [],
         "max_context_length": 8192,
         "max_length": 150,
         "rep_pen": 1.05,
         "rep_pen_range": 1024,
         "sampler_order": [6, 0, 1, 3, 4, 2, 5],
-        "stop_sequence": ["\n{[STOP]}","{[STOP]}"],
+        "stop_sequence": [],
         "temperature": 0.5,
         "tfs": 1,
         "top_a": 0.5,
@@ -41,20 +43,12 @@ class ModelController:
     }
 
     def send(self):
-
-        response = requests.post(
-            self.param["url"],
-            headers=self.headers,
-            json=self.param,
-            verify=False,
-            stream=False
-        )
-
-        if response.status_code == 200:
-            self.param["modelResponse"] = response.json()["choices"][0]["text"]
+        response = requests.post(self.param["url"], headers=self.headers, data=json.dumps(self.param))
+        response = response.json()
+        self.assistantResponse = response["choices"][0]["message"]["content"]
 
     def response(self):
-        return self.param["modelResponse"]
+        return self.assistantResponse
 
     def setParam(self, param, value):
         self.param[param] = value

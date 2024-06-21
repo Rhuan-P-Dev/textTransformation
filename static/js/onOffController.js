@@ -6,12 +6,14 @@ export class OnOffController {
     activateCssClass = " on"
 
     addTriggers(){
+        return
         for (let index = 0; index < this.all_onOff.length; index++) {
             onOff_trigger(this.all_onOff[index])
         }
     }
 
     addTrigger(onOff){
+        return
         onOff_trigger(onOff)
     }
 

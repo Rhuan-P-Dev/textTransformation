@@ -1,5 +1,5 @@
 # Text Transformation
-A simple project that allows you to transform text using local LLMs.
+A simple project that allows you to transform text using OpenAI API.
 
 ## How to use
 To use the project, you can follow these steps:
