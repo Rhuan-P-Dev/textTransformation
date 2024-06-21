@@ -39,7 +39,8 @@ class ModelController:
         "memory": "",
         "images": [],
         "trim_stop": False,
-        "logit_bias": {}
+        "logit_bias": {},
+        "cache_prompt": True
     }
 
     def send(self):
