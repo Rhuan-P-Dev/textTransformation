@@ -18,13 +18,13 @@ Now, Fix all gramatical errors. First give the fixed text and after give a detai
     "Emotion analyzer": [
         {"role": "user", "content": `Look at this: <text>{[DATA]}</text>
 
-Now, Tell me what emotion it conveys. Please respond to me in this **format**: emotion1, emotion2, emotion3. Please respond **ONLY** with the emotions.`},
+Now, Tell me what emotion it conveys. Please respond to me in this **format**: emotion1, emotion2, emotion3, and so on... Please respond **ONLY** with the emotions.`},
     ],
 
     "Topic extration": [
         {"role": "user", "content": `Look at this: <text>{[DATA]}</text>
 
-Now, Tell me the topics. Please respond to me in this **format**: topic1, topic2, topic3. Please respond **ONLY** with the topics.`},
+Now, Tell me the topics. Please respond to me in this **format**: topic1, topic2, topic3, and so on... Please respond **ONLY** with the topics.`},
     ],
 
     "Some definition": [
