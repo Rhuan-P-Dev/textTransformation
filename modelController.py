@@ -14,7 +14,7 @@ class ModelController:
         "url": "http://localhost:8080/v1/chat/completions",
         "messages": [],
         "max_context_length": 8192,
-        "max_tokens": 150,
+        "max_tokens": -1,
         "rep_pen": 1.05,
         "rep_pen_range": 1024,
         "sampler_order": [6, 0, 1, 3, 4, 2, 5],
