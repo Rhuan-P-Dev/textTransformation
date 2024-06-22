@@ -7,13 +7,20 @@ const blockChainTemplate = `<div class="blockChain" id="blockChain">
                     <option>to PT-BR</option>
                     <option>to English</option>
                 </optgroup>
+                <optgroup label="=== Fix ===">
+                    <option>Fix gramatical errors</option>
+                </optgroup>
                 <optgroup label="=== Analyzer ===">
-                    <option>Emotion Analyzer</option>
+                    <option>Emotion analyzer</option>
                 </optgroup>
                 <optgroup label="=== Extraction ===">
-                    <option>Some Definition</option>
+                    <option>Some definition</option>
+                    <option>Topic extration</option>
                     <option>10 words with similarity</option>
                     <option>Summary</option>
+                    <option>Simplify this text</option>
+                    <option>Complex this text</option>
+                    <option>Complex this text - HARD</option>
                 </optgroup>
             </select>
         </div>

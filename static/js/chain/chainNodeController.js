@@ -94,12 +94,6 @@ function init(){
             promptCleaner(this.get())
         )
 
-        prompt[1]["content"] = replacer(
-            prompt[1]["content"],
-            "{[DATA]}",
-            promptCleaner(this.get())
-        )
-
         this.callBack.input_output = this.input_output
         this.callBack.next = this.next
 
@@ -133,9 +127,8 @@ function callBackInit(text){
 }
 
 function callBackCleaner(text){
-    text = replacer(text, "]]]", "")
-    text = replacer(text, "[[[", "")
-    text = replacer(text, "\n{[STOP]}", "")
+    text = replacer(text, "<text>", "")
+    text = replacer(text, "</text>", "")
     return text
 }
 
