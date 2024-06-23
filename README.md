@@ -1,5 +1,5 @@
 # Text Transformation
-A simple project that allows you to transform text using OpenAI API.
+A simple project that allows you to transform text using the Llama.cpp server.
 
 ## How to use
 To use the project, you can follow these steps:
