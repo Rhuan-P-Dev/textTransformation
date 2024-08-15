@@ -23,7 +23,7 @@ const blockChainTemplate = `<div class="blockChain" id="blockChain">
                     <option>Simplify this text</option>
                     <option>Complex this text</option>
                     <option>Complex this text - HARD</option>
-                </optgroup>
+                    <option>Explain it with gradually</option>
             </select>
         </div>
         <div class="mid">

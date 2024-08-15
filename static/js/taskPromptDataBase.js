@@ -65,4 +65,10 @@ Now, Transform this input into a more complex one. Don't invent nonsensical thin
 
 Now, Transform this input into a more complex, expert, profound, detailed, and nuanced one. Don't invent nonsensical things, just make small obvious assumptions, stay consistent with the input. Please respond **ONLY** with the transformed input. Don't forget to **FOLLOW** the style of the original input.`},
     ],
+
+    "Explain it with gradually": [
+        {"role": "user", "content": `<input>{[DATA]}</input>
+
+Explain the input with gradually increasing complexity, up to five.`}
+    ],
 }
