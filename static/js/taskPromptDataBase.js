@@ -38,6 +38,16 @@ Now, Tell me the topics of input. Please respond to me in this **format**: topic
 
 Now, Make a summary.`},
     ],
+    "Summary v1": [
+        {"role": "user", "content": `<input>{[DATA]}</input>
+
+Now, summarize the input, highlighting the most relevant topics. For example: **Key topic** brief introduction.`},
+    ],
+    "Summary v2": [
+        {"role": "user", "content": `<input>{[DATA]}</input>
+
+Now, summarize the input, highlighting the most relevant topics. For example: **Key topic** brief introduction. After the summary explain deeply each topic.`},
+    ],
     "Simplify this text": [
         {"role": "user", "content": `<input>{[DATA]}</input>
 
