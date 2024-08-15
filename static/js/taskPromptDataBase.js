@@ -13,7 +13,7 @@ Now, Translate the text to PT-BR. Please respond **ONLY** with the translated te
     "Fix gramatical errors": [
         {"role": "user", "content": `Look at this: <text>{[DATA]}</text>
 
-Now, Fix all gramatical errors. First give the fixed text and after give a detailed explanation about every fix.`},
+Now, Fix all gramatical errors. First give a detailed explanation about every fix and after give the fixed text.`},
     ],
     "Emotion analyzer": [
         {"role": "user", "content": `Look at this: <text>{[DATA]}</text>
