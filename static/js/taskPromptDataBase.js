@@ -71,4 +71,10 @@ Now, Transform this input into a more complex, expert, profound, detailed, and n
 
 Explain the input with gradually increasing complexity, up to five.`}
     ],
+
+    "Invert the meaning": [
+        {"role": "user", "content": `<input>{[DATA]}</input>
+
+invert the meaning of this input. **ONLY** respond with inverted input.`}
+    ],
 }

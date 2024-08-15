@@ -24,6 +24,7 @@ const blockChainTemplate = `<div class="blockChain" id="blockChain">
                     <option>Complex this text</option>
                     <option>Complex this text - HARD</option>
                     <option>Explain it with gradually</option>
+                    <option>Invert the meaning</option>
             </select>
         </div>
         <div class="mid">
