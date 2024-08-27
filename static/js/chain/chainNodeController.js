@@ -94,12 +94,7 @@ function init(){
             promptCleaner(this.get())
         )
 
-        this.callBack.input_output = this.input_output
-        this.callBack.next = this.next
-
-        this.setCallBack(this.callBack)
-
-        this.send(prompt)
+            this.setCallBack(this, prompt)
 
     }else{
         this.styleCheckFail()

@@ -26,9 +26,12 @@ def do_connect():
 def get_message(msg):
     print("Data recieved:{0}".format(msg))
     if(msg["cmd"] == "sendToModel"):
-        Model.setParam("messages", msg["data"])
+        Model.setParam("messages", msg["data"]["text"])
         Model.send()
-        emit("from_server", {"cmd": "responseOfModel", "data": Model.response()})
+        emit("from_server", {"cmd": "responseOfModel", "data": {
+            "text": Model.response(),
+            "ID": msg["data"]["ID"]
+        }})
     elif(msg["cmd"] == "setParam"):
         Model.setParam(msg["data"]["param"], msg["data"]["value"])
 
