@@ -81,4 +81,10 @@ Explain the input with gradually increasing complexity, up to five.`}
 
 invert the meaning of this input. **ONLY** respond with inverted input.`}
     ],
+
+    "Extract information": [
+        {"role": "user", "content": `input:<input>{[DATA]}</input>
+
+You will extract every core piece of information from the input.`}
+    ],
 }
