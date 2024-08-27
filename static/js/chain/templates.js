@@ -16,7 +16,7 @@ const blockChainTemplate = `<div class="blockChain" id="blockChain">
                 <optgroup label="=== Extraction ===">
                     <option>Some definition</option>
                     <option>Topic extration</option>
-                    <option>10 words with similarity</option>
+                    <option>10 things with similarity</option>
                     <option>Summary</option>
                     <option>Summary v1</option>
                     <option>Summary v2</option>
