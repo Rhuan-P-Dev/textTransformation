@@ -28,7 +28,9 @@ Now, Tell me the topics of input. Please respond to me in this **format**: topic
     ],
 
     "Some definition": [
-        {"role": "user", "content": "Give me some definition of {[DATA]}."},
+        {"role": "user", "content": `input:<input>{[DATA]}</input>
+
+Provide me with a definition of the input.`},
     ],
     "10 words with similarity": [
         {"role": "user", "content": "Give me the 10 words with similarity of {[DATA]}. 1-10."},
