@@ -8,6 +8,9 @@ log.setLevel(logging.ERROR)
 
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
+from engineio.payload import Payload
+Payload.max_decode_packets = 128
+
 app = Flask(__name__)
 app.config["SECRET KEY"] = "secret!"
 socketio = SocketIO(app, ping_timeout=1*60*1000)
