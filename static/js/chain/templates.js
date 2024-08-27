@@ -18,10 +18,13 @@ const blockChainTemplate = `<div class="blockChain" id="blockChain">
                     <option>Topic extration</option>
                     <option>10 words with similarity</option>
                     <option>Summary</option>
+                    <option>Summary v1</option>
+                    <option>Summary v2</option>
                     <option>Simplify this text</option>
                     <option>Complex this text</option>
                     <option>Complex this text - HARD</option>
-                </optgroup>
+                    <option>Explain it with gradually</option>
+                    <option>Invert the meaning</option>
             </select>
         </div>
         <div class="mid">
