@@ -13,8 +13,13 @@ const blockChainTemplate = `<div class="blockChain" id="blockChain">
                 <optgroup label="=== Analyzer ===">
                     <option>Emotion analyzer</option>
                 </optgroup>
-                <optgroup label="=== Extraction ===">
+                <optgroup label="=== Some Definition ===">
+                    <option>Some overview definition</option>
                     <option>Some definition</option>
+                    <option>Some scientific definition</option>
+                    <option>Some religious definition</option>
+                    <option>Some technology definition</option>
+                <optgroup label="=== Extraction ===">
                     <option>Topic extration</option>
                     <option>10 things with similarity</option>
                     <option>Summary</option>

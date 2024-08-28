@@ -32,6 +32,31 @@ Now, Tell me the topics of input. Please respond to me in this **format**: topic
 
 Provide me with a definition of the input.`},
     ],
+
+    "Some scientific definition": [
+        {"role": "user", "content": `input:<input>{[DATA]}</input>
+
+Provide me with a scientific definition of the input.`},
+    ],
+
+    "Some religious definition": [
+        {"role": "user", "content": `input:<input>{[DATA]}</input>
+
+Provide me with a religious definition of the input.`},
+    ],
+
+    "Some technology definition": [
+        {"role": "user", "content": `input:<input>{[DATA]}</input>
+
+Provide me with a technology definition of the input.`},
+    ],
+
+    "Some overview definition": [
+        {"role": "user", "content": `input:<input>{[DATA]}</input>
+
+Provide me with a overview definition of the input content.`},
+    ],
+
     "10 things with similarity": [
         {"role": "user", "content": `input:<input>{[DATA]}</input>
 
