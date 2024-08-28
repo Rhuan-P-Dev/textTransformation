@@ -112,4 +112,64 @@ invert the meaning of this input. **ONLY** respond with inverted input.`}
 
 You will extract every core piece of information from the input.`}
     ],
+
+
+
+
+
+
+
+
+    "merge v1": [
+    {"role": "user", "content": `input:<input>{[DATA]}</input>
+
+I want you to merge ALL inputs, but you must follow these **guidelines** for a high-quality merge.
+
+# **guidelines**:
+1. Forbidden: duplicated content, similar meaning contents and ignoring rule 3.
+2. All generated content must be directly relevant to the final output. If an input does not contribute any new information or perspective to the final output, it will not be included.
+3. Only respond with the final output.
+4. Don't invent nonsensical things, Don't make **ANY** assumptions, stay consistent with the inputs.
+5. Don't forget to **FOLLOW** the style of the input.`}
+    ],
+    "try upgrade": [
+        {"role": "user", "content": `original input:<original input>{[ORIGINAL_DATA]}</original Input>
+
+original output:<original output>{[OUTPUT_DATA]}</original output>
+
+Your response will follow this order:
+
+# **Order**:
+1. Identify the objective of the original input, Think step-by-step.
+2. Think if the output manage to achieve this objective.
+3. Think if is possible to improve in some way to better achieve the objective.
+4. If not, just respond with <complete>. and end your response. If yes, rewrite the output to be better. When you rewrite your better output, start with: <better output> and end with: </better output>`}
+    ],
+
+    "better readability": [
+        {"role": "user", "content": `original input:<original input>{[ORIGINAL_DATA]}</original Input>
+
+original output:<original output>{[OUTPUT_DATA]}</original output>
+
+Your response will follow this order:
+
+# **Order**:
+1. try catch some issue, error, or low quality readability in the original input, Think step-by-step.
+2. Think if is possible to improve in some way to better achieve the better readability.
+3. If not, just respond with <complete>. and end your response. If yes, rewrite the output to be better. When you rewrite your better output, start with: <better output> and end with: </better output>`}
+    ],
+
+    "better formatting": [
+        {"role": "user", "content": `original input:<original input>{[ORIGINAL_DATA]}</original Input>
+
+original output:<original output>{[OUTPUT_DATA]}</original output>
+
+Your response will follow this order:
+
+# **Order**:
+1. try catch some issue, error, or low quality formatting in the original input, Think step-by-step.
+2. Think if is possible to improve in some way to better achieve the better formatting.
+3. If not, just respond with <complete>. and end your response. If yes, rewrite the output to be better. When you rewrite your better output, start with: <better output> and end with: </better output>`}
+    ],
+
 }

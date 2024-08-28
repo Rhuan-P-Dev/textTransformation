@@ -34,9 +34,10 @@ const blockChainTemplate = `<div class="blockChain" id="blockChain">
             </select>
         </div>
         <div class="mid">
-        <!--
-            <div class="onOff clickable" id="onOff" state="off" title="Give examples for generic LLM to understand the task that needs to be executed.">Examples</div>
-        -->
+            <div class="onOff clickable" state="off" title="Makes the LLM generate X outputs and aggregate all outputs into one output.">Converge</div>
+            <div class="onOff clickable" state="off" title="Makes the LLM try to improve input X times.">Loop</div>
+            <div class="onOff clickable" state="off" title="Makes the LLM create a knowledge database to improve input.">Database</div>
+            <div class="onOff clickable" state="off" title="Makes the LLM try to improve input X*(2*Y) times.">MultiLoop</div>
         </div>
         <div class="down">
             <div class="clickable button">Run Block</div>
