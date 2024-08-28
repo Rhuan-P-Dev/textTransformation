@@ -275,7 +275,7 @@ export class ChainNode {
                         next.input_output.value = this.input_output.value
                     }
 
-                    next.previous[0].next = []
+                    next.previous[0].next = [next.previous[0].next[0]]
                     
                     next.next.forEach(
                         (next_next) => {
