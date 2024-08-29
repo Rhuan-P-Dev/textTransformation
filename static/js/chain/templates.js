@@ -13,10 +13,15 @@ const blockChainTemplate = `<div class="blockChain" id="blockChain">
                 <optgroup label="=== Analyzer ===">
                     <option>Emotion analyzer</option>
                 </optgroup>
-                <optgroup label="=== Extraction ===">
+                <optgroup label="=== Some Definition ===">
+                    <option>Some overview definition</option>
                     <option>Some definition</option>
+                    <option>Some scientific definition</option>
+                    <option>Some religious definition</option>
+                    <option>Some technology definition</option>
+                <optgroup label="=== Extraction ===">
                     <option>Topic extration</option>
-                    <option>10 words with similarity</option>
+                    <option>10 things with similarity</option>
                     <option>Summary</option>
                     <option>Summary v1</option>
                     <option>Summary v2</option>
@@ -25,12 +30,14 @@ const blockChainTemplate = `<div class="blockChain" id="blockChain">
                     <option>Complex this text - HARD</option>
                     <option>Explain it with gradually</option>
                     <option>Invert the meaning</option>
+                    <option>Extract information</option>
             </select>
         </div>
         <div class="mid">
-        <!--
-            <div class="onOff clickable" id="onOff" state="off" title="Give examples for generic LLM to understand the task that needs to be executed.">Examples</div>
-        -->
+            <div class="onOff clickable" state="off" title="Makes the LLM generate X outputs and aggregate all outputs into one output.">Converge</div>
+            <div class="onOff clickable" state="off" title="Makes the LLM try to improve input X times.">Loop</div>
+            <div class="onOff clickable" state="off" title="Makes the LLM create a knowledge database to improve input.">Database</div>
+            <div class="onOff clickable" state="off" title="Makes the LLM try to improve input X*(2*Y) times.">MultiLoop</div>
         </div>
         <div class="down">
             <div class="clickable button">Run Block</div>

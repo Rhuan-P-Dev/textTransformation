@@ -8,9 +8,12 @@ log.setLevel(logging.ERROR)
 
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
+from engineio.payload import Payload
+Payload.max_decode_packets = 128
+
 app = Flask(__name__)
 app.config["SECRET KEY"] = "secret!"
-socketio = SocketIO(app, ping_timeout=99999)
+socketio = SocketIO(app, ping_timeout=1*60*1000)
 
 @app.route("/")
 def index():
@@ -26,9 +29,12 @@ def do_connect():
 def get_message(msg):
     print("Data recieved:{0}".format(msg))
     if(msg["cmd"] == "sendToModel"):
-        Model.setParam("messages", msg["data"])
+        Model.setParam("messages", msg["data"]["text"])
         Model.send()
-        emit("from_server", {"cmd": "responseOfModel", "data": Model.response()})
+        emit("from_server", {"cmd": "responseOfModel", "data": {
+            "text": Model.response(),
+            "ID": msg["data"]["ID"]
+        }})
     elif(msg["cmd"] == "setParam"):
         Model.setParam(msg["data"]["param"], msg["data"]["value"])
 

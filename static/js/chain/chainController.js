@@ -66,7 +66,15 @@ export class ChainController {
     initNewBlockChain(){
         Chain.addBlockChain()
 
-        OnOff.addTrigger(Chain.getOnOff(Chain.getLastBlockChain()))
+        Chain.getOnOffs(Chain.getLastBlockChain()).forEach(element => {
+            if(
+                element.getAttribute
+            ){
+                OnOff.addTrigger(
+                    element
+                )
+            }
+        })
 
         let tempChainNode = ChainNode.newChainNode(Chain.getLastBlockChain())
 
@@ -79,8 +87,9 @@ export class ChainController {
         return blockChain.childNodes[1].childNodes[1].childNodes[1].value
     }
 
-    getOnOff(blockChain){
-        return blockChain.childNodes[1].childNodes[3].childNodes[1]
+    getOnOffs(blockChain){
+
+        return blockChain.childNodes[1].childNodes[3].childNodes
     }
 
 }

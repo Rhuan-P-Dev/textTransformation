@@ -7,11 +7,18 @@ class CustomDoublyLinkedList{
         input_output: document.getElementById("chainInput"),
 
         init: function(){
-            this.next.init()
+            this.next.forEach(
+                (next) => {
+                    next.init()
+                }
+            )
+            
         },
 
-        next:undefined,
-        previous:null,
+        isDone: true,
+
+        next: [],
+        previous: [],
     }
 
     lastNode = {
@@ -19,39 +26,48 @@ class CustomDoublyLinkedList{
         lastNode:true,
 
         input_output:document.getElementById("chainOutput"),
-        get: function(){return this.previous.input_output.value},
+        get: function(){
+            let output = ""
+            this.previous.forEach(
+                (previous) => {
+                    output = output + previous.input_output.value
+                }
+            )
+            return output
+        },
         init: function(){
             this.input_output.value = this.get()
         },
 
-        next:null,
-        previous:undefined,
+        next: [],
+        previous:[],
 
         styleInit:() => {},
         styleCheckFail:() => {},
     }
 
     constructor(){
-        this.firstNode.next = this.lastNode
-        this.lastNode.previous = this.firstNode
+        this.firstNode.next.push(this.lastNode)
+        this.lastNode.previous.push(this.firstNode)
         this.Chain = this.firstNode
     }
 
     add(ChainNode){
         let node = this.Chain
         while(1){
-            if(node.next.lastNode == true){
-                let oldNext = node.next
+            if(node.next[0].lastNode == true){
+                let oldNext = node.next.pop()
+                oldNext.previous.pop()
 
-                node.next = ChainNode
-                oldNext.previous = ChainNode
+                node.next.push(ChainNode)
+                oldNext.previous.push(ChainNode)
 
-                ChainNode.next = oldNext
-                ChainNode.previous = node
+                ChainNode.next.push(oldNext)
+                ChainNode.previous.push(node)
 
                 return
             }else{
-                node = node.next
+                node = node.next[0]
             }
         }
     }
@@ -59,16 +75,18 @@ class CustomDoublyLinkedList{
     remove(){
         let node = this.Chain
         while(1){
-            if(node.next.lastNode == true){
+            if(node.next[0].lastNode){
 
                 if(node.protected){return}
 
-                node.previous.next = node.next
-                node.next.previous = node.previous
+                node.previous[0].next.pop()
+                node.previous[0].next.push(node.next[0])
+                node.next[0].previous.pop()
+                node.next[0].previous.push(node.previous[0])
 
                 return
             }else{
-                node = node.next
+                node = node.next[0]
             }
         }
     }
