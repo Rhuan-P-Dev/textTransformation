@@ -1,13 +1,16 @@
 
 import { ChainNodeController } from "./chainNodeController.js"
 import { OnOffController } from "../onOffController.js"
+import { ComposerNodeController } from "./composerNodeController.js"
 
 var ChainNode = ""
+var ComposerNode = ""
 var OnOff = ""
 
 docReady(function(){
 
     ChainNode = new ChainNodeController()
+    ComposerNode = new ComposerNodeController()
     OnOff = new OnOffController()
 
 })
@@ -20,6 +23,10 @@ export class ChainController {
 
     addBlockChain(){
         this.chainBox.insertAdjacentHTML("beforeend",blockChainTemplate)
+    }
+
+    addComposerBlock(){
+        this.chainBox.insertAdjacentHTML("beforeend",composerBlockTemplate)
     }
 
     addBlockChainToChain(ChainNode){
@@ -77,6 +84,26 @@ export class ChainController {
         })
 
         let tempChainNode = ChainNode.newChainNode(Chain.getLastBlockChain())
+
+        Chain.addBlockChainOptionsTriggers(tempChainNode)
+
+        Chain.addBlockChainToChain(tempChainNode)
+    }
+
+    initNewComposerBlock(){
+        Chain.addComposerBlock()
+
+        Chain.getOnOffs(Chain.getLastBlockChain()).forEach(element => {
+            if(
+                element.getAttribute
+            ){
+                OnOff.addTrigger(
+                    element
+                )
+            }
+        })
+
+        let tempChainNode = ComposerNode.newComposerNode(Chain.getLastBlockChain())
 
         Chain.addBlockChainOptionsTriggers(tempChainNode)
 

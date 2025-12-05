@@ -11,6 +11,7 @@ docReady(function(){
 export class UIController {
 
     buttonAddBlockChain = document.getElementById("buttonAddBlockChain")
+    buttonAddComposerBlock = document.getElementById("buttonAddComposerBlock")
     chainButtonStopChain = document.getElementById("chainButtonStopChain")
     buttonRemoveBlockChain = document.getElementById("buttonRemoveBlockChain")
 
@@ -18,6 +19,10 @@ export class UIController {
 
         this.buttonAddBlockChain.addEventListener("click",function(){
             Chain.initNewBlockChain()
+        })
+
+        this.buttonAddComposerBlock.addEventListener("click",function(){
+            Chain.initNewComposerBlock()
         })
 
         this.buttonRemoveBlockChain.addEventListener("click",function(){

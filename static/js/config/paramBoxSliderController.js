@@ -22,7 +22,8 @@ export class ParamBoxSliderController{
                 updateCurrentValue(this)
                 Server.setParam(
                     this.getAttribute("typeOfParam"),
-                    parseFloat(this.value)
+                    parseFloat(this.value),
+                    parseInt(this.getAttribute("modelid"))
                 )
             })
 
@@ -33,7 +34,8 @@ export class ParamBoxSliderController{
             this.allParamBoxText[index].childNodes[3].childNodes[1].addEventListener("keyup", function(){
                 Server.setParam(
                     this.getAttribute("typeOfParam"),
-                    this.value
+                    this.value,
+                    parseInt(this.getAttribute("modelid"))
                 )
             })
 
