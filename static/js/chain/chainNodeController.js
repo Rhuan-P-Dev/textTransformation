@@ -1,67 +1,132 @@
-
 import { ServerController } from "../serverController.js"
 import { ChainController } from "./chainController.js"
-import { CloneController } from "../utils/clone.js"
-import { PreMadeCustomChainController } from "./preMadeCustomChainController.js"
-
-var Server
-var Chain
-var Clone
-var PreMadeCustomChain
-
-docReady(function(){
-
-    Server = new ServerController()
-    Chain = new ChainController()
-    Clone = new CloneController()
-    PreMadeCustomChain = new PreMadeCustomChainController()
-
-})
+import { PromptsDataBaseController } from "../taskPromptDataBase.js"
+import { UtilsController } from "./utilsController.js"
+import { AdvancedChainController } from "./advancedChainController.js"
+import { PromptController } from "./promptController.js"
+import { MinimalChainNode } from "./minimalChainNode.js"
 
 export class ChainNodeController {
 
     newChainNode(element){
 
-        return new ChainNode(undefined, element)
-    
+        return new ChainNode({
+            typeOfTask: undefined,
+            element
+        })
+
     }
 
 }
 
-export class ChainNode {
+export class ChainNode extends MinimalChainNode{
 
-    constructor(typeOfTask, element = undefined, nodes = []){
+    constructor({
+        typeOfTask = undefined,
+        element = undefined,
+        previousNodes = [],
+        nextNodes = [],
+
+        outputObserver = new Observer(),
+        afterGetPromptObserver = new Observer(),
+        beforeInitsChecksObserver = new Observer(),
+
+        UtilsC = UtilsController,
+        ChainC = new ChainController(),
+        PromptsDataBaseC = new PromptsDataBaseController(),
+        ServerC = new ServerController(),
+
+        ChainNodeModC = new ChainNodeModController(),
+        PromptC = new PromptController(),
+    } = {} ){
+
+        super({
+            nextNodes,
+            previousNodes,
+        })
+
+        this.UtilsC = UtilsC
+        this.ChainC = ChainC
+        this.PromptsDataBaseC = PromptsDataBaseC
+        this.ServerC = ServerC
+        this.ChainNodeModC = ChainNodeModC
+        this.PromptC = PromptC
+
+        this.send = this.ServerC.send
+        this.setCallback = this.ServerC.setCallback
 
         this.typeOfTask = typeOfTask
-
-        nodes.forEach((node) => {
-
-            node.next.push(this)
-            this.previous.push(node)
-
-        })
 
         if(element){
 
             this.element = element
-            this.input_output = Chain.getOutputBlockChain(element)
+            this.input_output = this.ChainC.getOutputBlockChain(element)
 
-            this.hiddenNode = false
+        }
 
-        }else{
-            this.hiddenNode = true
+        this.outputObserver = outputObserver
+        this.afterGetPromptObserver = afterGetPromptObserver
+        this.beforeInitsChecksObserver = beforeInitsChecksObserver
+
+    }
+
+    listOfDefaultSpecialFlags = {
+        "repeatPrompt": 0 // INT only
+    }
+
+    listOfSpecialFlags = {
+        "repeatPrompt": 0 // INT only
+    }
+
+    setSpecialFlags({
+        flags: {}
+    } = {}){
+
+        for (key in flags){
+            
+            if(this.listOfSpecialFlags[key] == undefined){
+                console.warn("Special flag not found: " + key)
+            }else{
+                this.listOfSpecialFlags[key] = flags[key]
+            }
         }
 
     }
 
-    send = Server.send
-    setCallback = Server.setCallback
+    getSpecialFlags(){
+        return this.listOfSpecialFlags
+    }
 
-    next = []
-    previous = []
+    cleanSpecialFlags(){
+        this.listOfSpecialFlags = this.listOfDefaultSpecialFlags
+    }
 
-    input_output = {
-        value: undefined
+    /**
+     * Register a listener that will be called whenever the node receives
+     * output from the server.
+     *
+     * @param {function(string):void} fn - callback receiving the output text
+     */
+    onOutput(
+        fn,
+        {
+            selfDelete = false
+        } = {}
+    ) {
+        this.outputObserver.subscribe(fn);
+    }
+
+    onInitGetPrompt(fn) {
+        this.afterGetPromptObserver.subscribe(fn);
+    }
+
+    onBeforeInitsChecks(
+        fn,
+        {
+            selfDelete = false
+        } = {}
+    ) {
+        this.beforeInitsChecksObserver.subscribe(fn);
     }
 
     typeOfTask = undefined
@@ -85,7 +150,15 @@ export class ChainNode {
     check(){
 
         if(
-            Chain.getTypeOfTask(this.element) == "Type Of Task"
+            (
+                this.element
+                &&
+                this.ChainC.getTypeOfTask(this.element) == "Type Of Task"
+            )
+            ||
+            this.typeOfTask == "Type Of Task"
+            ||
+            this.typeOfTask == undefined
         ){
             return false
         }
@@ -98,132 +171,63 @@ export class ChainNode {
         return runChain
     }
 
-    get(previous = this.previous[0]){
-        return previous.input_output.value
-    }
-
-    formatGetAllOutput(all){
-
-        let result = ""
-
-        for (let index = 0; index < all.length; index++) {
-
-            if(all[index] === undefined){
-                return ""
-            }
-
-            if(all.length === 1){
-                return all[index]
-            }
-
-            result += "<input_"+(index+1)+">" + all[index] + "</input_"+(index+1)+">"
-
-            if(all[index+1]){
-                result += "\n"
-            }
-
-        }
-
-        return result
-
-    }
-
-    getAll(){
-
-        let all = []
-
-        this.previous.forEach((previous) => {
-            all.push(this.get(previous))
-        })
-
-        return all
-
-    }
-
-    getAllOutputs(){
-
-        return this.formatGetAllOutput(this.getAll()) || this.previous[0]?.getAllOutputs() || ""
-
-    }
-
-    getAdditionalNotes(){
-
-        let text = ""
-
-        this.additionalNotes.forEach((note) => {
-
-            text = "<additional_note>"+note+"</additional_note>" + "\n"
-
-        })
-
-        return text
-
+    getTask(){
+        return this.typeOfTask
     }
 
     getPrompt(){
 
-        let prompt = Clone.recursiveCloneAttribute(promptsDataBase[this.typeOfTask])
-
-        let instruction = replacer(
-            prompt[0]["content"],
-            "{[DATA]}",
-            promptCleaner(
-                this.getAllOutputs()
-            )
-        )
-
-        instruction = this.getAdditionalNotes() + instruction
-
-        return instruction
+        return this.PromptC.getPrompt({
+            prompt: this.typeOfTask,
+            data: this.getCleanOutputs(),
+            node: this,
+            specialFlags: this.getSpecialFlags()
+        })
 
     }
 
-    callBackInitCustomFunctionsBefore = []
-    callBackInitCustomFunctionsAfter = []
-
-    hiddenNode = undefined
+    defineTask(){
+        if(this.element){
+            this.typeOfTask = this.ChainC.getTypeOfTask(this.element)
+        }
+    }
 
     init(){
 
         this.styleInit()
 
+        this.defineTask()
+
+        this.set(this.getCleanOutputs())
+
+        if(this.ChainNodeModC.existOnOff(this.element)){
+            this.ChainNodeModC.init(this)
+            return
+        }
+
+        this.beforeInitsChecksObserver.notify(this.getCleanOutputs())
+
+        console.error(
+            this.beforeInitsChecksObserver
+        )
+
         if(
-            (
-                this.hiddenNode
-                ||
-                this.check()
-            )
+            this.check()
             &&
             this.isRunChainTrue()
             &&
             this.checkOutputs()
         ){
 
-            if(this.element){
-
-                this.typeOfTask = Chain.getTypeOfTask(this.element)
-
-                let normalFlow = PreMadeCustomChain.run(
-                    this.element,
-                    this.typeOfTask,
-                    this
-                )
-
-                if(!normalFlow){return}
-
+            if(this.protected){
+                console.error("FOUND PROTECTED")
             }
 
-            let prompt = Clone.recursiveCloneAttribute(
-                promptsDataBase[
-                    this.typeOfTask
-               ]
-            )
-            
-            prompt[0]["content"] = this.getPrompt()
+            const prompt = this.getPrompt()
 
-            this.callBackInitCustomFunctionsBefore.forEach((customFunction) => {
-                customFunction(this, prompt)
-            })
+            this.afterGetPromptObserver.notify(prompt)
+
+            console.log(prompt)
 
             this.setCallback(this, prompt)
 
@@ -234,85 +238,26 @@ export class ChainNode {
 
     callBackInit(text){
 
+        console.log("callback init")
+        console.log("node output: " + text)
+
         this.styleFinish()
 
-        text = callBackCleaner(text)
+        text = this.UtilsC.callBackCleaner(text)
 
-        if(!this.isAdditionalNote){
-            this.input_output.value = text
-        }
+        this.outputObserver.notify(text);
 
-        let normalFlow = true
-
-        for (
-            let index = 0;
-            index < this.callBackInitCustomFunctionsAfter.length;
-            index++
-        ) {
-
-            if(
-                this.callBackInitCustomFunctionsAfter[index](this, text)
-            ){
-                normalFlow = false
-                break
-            }
-
-        }
-
-        if(!normalFlow){return}
+        this.set(text)
 
         this.next.forEach(
             (next) => {
-                if(
-                    next.element
-                    &&
-                    !this.element
-                ){
-
-                    next.styleFinish()
-
-                    if(!this.isAdditionalNote){
-                        next.input_output.value = this.input_output.value
-                    }
-
-                    next.previous[0].next = [next.previous[0].next[0]]
-                    
-                    next.next.forEach(
-                        (next_next) => {
-                            next_next.init()
-                        }
-                    )
-
-                }else{
-
-                    if(this.isAdditionalNote){
-                        next.addNote(text)
-                    }
-
-                    next.init()
-                }
+                next.init()
             }
         )
 
     }
 
-    additionalNotes = []
-
-    isAdditionalNote = false
-
-    addNote(note){
-        this.additionalNotes.push(note)
-    }
-
-    deleteadditionalNotes(){
-
-        this.additionalNotes = []
-
-    }
-
     styles = true
-
-    isDone = false
 
     styleInit(){
 
@@ -333,8 +278,6 @@ export class ChainNode {
 
     styleCheckFail(){
 
-        this.deleteadditionalNotes()
-
         if(!this.styles){return}
 
         if(this.element){
@@ -350,8 +293,6 @@ export class ChainNode {
 
     styleFinish(){
 
-        this.deleteadditionalNotes()
-
         this.isDone = true
 
         if(!this.styles){return}
@@ -360,6 +301,30 @@ export class ChainNode {
             this.element.style.border = "3px solid green"
         }
 
+    }
+
+}
+
+export class ChainNodeModController{
+
+    constructor({
+        ChainC = new ChainController(),
+        AdvancedChainC = new AdvancedChainController(),
+    } = {}){
+        this.ChainC = ChainC
+        this.AdvancedChainC = AdvancedChainC
+    }
+
+    existOnOff(element){
+        console.log("========= existOnOff ==========")
+        //console.log(this.ChainC.getOns(element)[0].innerText)
+        console.log(this.ChainC.getOns(element))
+        return this.ChainC.getOns(element).length >= 1
+    }
+
+    init(node){
+        console.log("hey!")
+        this.AdvancedChainC.run(node)
     }
 
 }

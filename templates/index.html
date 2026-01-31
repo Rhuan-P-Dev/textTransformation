@@ -17,11 +17,10 @@
     <!-- GLOBAL -->
 
     <script src="static/js/taskPromptDataBase.js"></script>
-    <script src="static/js/taskExamplesDataBase.js"></script>
+    <script src="static/js/taskPromptDataBaseComposer.js"></script>
 
     <script src="static/js/globalFunctions.js"></script>
     <script src="static/js/globalVariables.js"></script>
-    <script src="static/js/globalClass.js"></script>
 
     <script type="module" src="static/js/serverController.js"></script>
     <script type="module" src="static/js/onOffController.js"></script>
@@ -63,6 +62,7 @@
                 </div>
                 <div class="down">
                     <div class="clickable button" id="buttonRunChain">Run Chain</div>
+                    <div class="clickable button" id="buttonClean">Clean</div>
                     <div class="clickable button" id="mainButtonStopChain">Stop Chain</div>
                 </div>
             </div>
@@ -116,6 +116,83 @@
                                 <input type="range" id="loopDepth" class="customSlider" min="0" max="6" value="0" step="1">
                             </div>
                         </div>
+                        <div class="paramBox paramBoxSlider">
+                            <div class="up">
+                                <p>Best of</p>
+                            </div>
+                            <div class="mid">
+                                <p>3</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" id="bestOf" class="customSlider" min="2" max="100" value="3" step="1">
+                            </div>
+                        </div>
+                        <div class="paramBox paramBoxSlider">
+                            <div class="up">
+                                <p>Divide by</p>
+                            </div>
+                            <div class="mid">
+                                <p>1</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" id="divideBy" class="customSlider" min="1" max="6" value="1" step="1">
+                            </div>
+                        </div>
+                        <div class="paramBox paramBoxSlider">
+                            <div class="up">
+                                <p>Re-read more</p>
+                            </div>
+                            <div class="mid">
+                                <p>1</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" id="rereadMore" class="customSlider" min="1" max="10" value="1" step="1">
+                            </div>
+                        </div>
+                        <div class="paramBox paramBoxSlider">
+                            <div class="up">
+                                <p>Blob</p>
+                            </div>
+                            <div class="mid">
+                                <p>1</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" id="blob" class="customSlider" min="1" max="1000" value="1" step="1">
+                            </div>
+                        </div>
+                        <div class="paramBox paramBoxSlider">
+                            <div class="up">
+                                <p>golden insights</p>
+                            </div>
+                            <div class="mid">
+                                <p>1</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" id="goldenInsights" class="customSlider" min="1" max="10" value="1" step="1">
+                            </div>
+                        </div>
+                        <div class="paramBox paramBoxSlider">
+                            <div class="up">
+                                <p>moi</p>
+                            </div>
+                            <div class="mid">
+                                <p>1</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" id="moi" class="customSlider" min="1" max="100" value="1" step="1">
+                            </div>
+                        </div>
+                         <div class="paramBox paramBoxSlider">
+                            <div class="up">
+                                <p>factory judges</p>
+                            </div>
+                            <div class="mid">
+                                <p>1</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" id="factoryjudges" class="customSlider" min="1" max="61" value="1" step="2">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="configBox" state="closed">
@@ -125,10 +202,66 @@
                     <div class="down" style="display: none;">
                         <div class="paramBox paramBoxText">
                             <div class="up">
-                                <p>URL</p>
+                                <p>URL 1</p>
                             </div>
                             <div class="down">
-                                <input type="text" id="urlInput" value="http://localhost:8080/v1/chat/completions" typeOfParam="url">
+                                <input type="text" id="urlInput" value="http://localhost:NONE/v1/chat/completions" typeOfParam="url" modelid="0">
+                            </div>
+                        </div>
+                         <div class="paramBox paramBoxText">
+                            <div class="up">
+                                <p>URL 2</p>
+                            </div>
+                            <div class="down">
+                                <input type="text" id="urlInput" value="http://localhost:NONE/v1/chat/completions" typeOfParam="url" modelid="1">
+                            </div>
+                        </div>
+                        <div class="paramBox paramBoxText">
+                            <div class="up">
+                                <p>URL 3</p>
+                            </div>
+                            <div class="down">
+                                <input type="text" id="urlInput" value="http://localhost:NONE/v1/chat/completions" typeOfParam="url" modelid="2">
+                            </div>
+                        </div>
+                        <div class="paramBox paramBoxText">
+                            <div class="up">
+                                <p>URL 4</p>
+                            </div>
+                            <div class="down">
+                                <input type="text" id="urlInput" value="http://localhost:NONE/v1/chat/completions" typeOfParam="url" modelid="3">
+                            </div>
+                        </div>
+                        <div class="paramBox paramBoxText">
+                            <div class="up">
+                                <p>URL 5</p>
+                            </div>
+                            <div class="down">
+                                <input type="text" id="urlInput" value="http://localhost:NONE/v1/chat/completions" typeOfParam="url" modelid="4">
+                            </div>
+                        </div>
+                        <div class="paramBox paramBoxText">
+                            <div class="up">
+                                <p>URL 6</p>
+                            </div>
+                            <div class="down">
+                                <input type="text" id="urlInput" value="http://localhost:NONE/v1/chat/completions" typeOfParam="url" modelid="5">
+                            </div>
+                        </div>
+                        <div class="paramBox paramBoxText">
+                            <div class="up">
+                                <p>URL 7</p>
+                            </div>
+                            <div class="down">
+                                <input type="text" id="urlInput" value="http://localhost:NONE/v1/chat/completions" typeOfParam="url" modelid="6">
+                            </div>
+                        </div>
+                        <div class="paramBox paramBoxText">
+                            <div class="up">
+                                <p>URL 8</p>
+                            </div>
+                            <div class="down">
+                                <input type="text" id="urlInput" value="http://localhost:NONE/v1/chat/completions" typeOfParam="url" modelid="7">
                             </div>
                         </div>
                     </div>
@@ -146,7 +279,7 @@
                                 <p>-1</p>
                             </div>
                             <div class="down">
-                                <input type="range" class="customSlider" min="-1" max="2048" value="-1" step="1" typeOfParam="max_tokens">
+                                <input type="range" class="customSlider" min="-1" max="20480" value="-1" step="64" typeOfParam="max_tokens">
                             </div>
                         </div>
                         <div class="paramBox paramBoxSlider">
@@ -158,6 +291,17 @@
                             </div>
                             <div class="down">
                                 <input type="range" class="customSlider" min="0.01" max="3" value="0.5" step="0.01" typeOfParam="temperature">
+                            </div>
+                        </div>
+                        <div class="paramBox paramBoxSlider">
+                            <div class="up">
+                                <p>Top Nsigma</p>
+                            </div>
+                            <div class="mid">
+                                <p>0</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="0.01" max="2" value="0" step="0.01" typeOfParam="top_n_sigma">
                             </div>
                         </div>
 
@@ -240,6 +384,17 @@
                                 <input type="range" class="customSlider" min="1" max="32768" value="1024" step="1" typeOfParam="repeat_last_n">
                             </div>
                         </div>
+                         <div class="paramBox paramBoxSlider">
+                            <div class="up">
+                                <p>Presence Penalty</p>
+                            </div>
+                            <div class="mid">
+                                <p>0</p>
+                            </div>
+                            <div class="down">
+                                <input type="range" class="customSlider" min="-2" max="2" value="0" step="0.01" typeOfParam="presence_penalty">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -247,6 +402,9 @@
                 <div class="up">
                     <div>
                         <div class="clickable button" id="buttonAddBlockChain">Add Block Chain</div>
+                    </div>
+                    <div>
+                        <div class="clickable button" id="buttonAddComposerBlock">Add Composer Block</div>
                     </div>
                     <div>
                         <div class="clickable button" id="chainButtonStopChain">Stop Chain</div>

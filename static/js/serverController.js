@@ -7,13 +7,16 @@ export class ServerController {
         socket.send({"cmd": "sendToModel", "data":{text, ID}})
     }
 
-    setCallback(callBack, prompt = undefined){
+    setCallback(callBack, prompt = undefined, name = undefined){
 
         let ID = randomUniqueID()
 
         chain_callback[
             ID
-        ] = callBack
+        ] = {
+            "callBack": callBack,
+            "name": name
+        }
 
         if(prompt){
             this.send(prompt, ID)
@@ -23,15 +26,18 @@ export class ServerController {
 
     }
 
-    setParam(param, value){
-        socket.send({"cmd": "setParam", "data":{"param":param,"value":value}})
+    setParam(param, value, id){
+        socket.send({"cmd": "setParam", "data":{"param":param,"value":value, "id":id}})
     }
 
 }
 
 socket.on('from_server', function(msg) {
     if(msg.cmd == "responseOfModel"){
-        chain_callback[msg.data.ID].callBackInit(msg.data.text)
+        chain_callback[msg.data.ID].callBack.callBackInit(
+            msg.data.text,
+            chain_callback[msg.data.ID].name
+        )
 
         delete chain_callback[msg.data.ID]
 
