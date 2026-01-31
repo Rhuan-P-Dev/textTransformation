@@ -24,7 +24,18 @@ class MetaModelController:
 
     def __init__(self):
 
-        self.add("127.0.0.1", "20000")
+        self.add("127.0.0.1", "?")
+
+        return 
+
+        self.add("127.0.0.1", "20003")
+        self.add("127.0.0.1", "20002")
+        self.add("192.168.0.237", "20002")
+        self.add("192.168.0.239", "5003")
+
+        return
+
+        self.add("192.168.0.152", "20001")
 
         return
 

@@ -21,8 +21,8 @@ class ModelController:
             "temperature": 1,
             "tfs_z": 1,
             "top_k": -1,
-            "top_p": 1,
-            "min_p": 0.05,
+            "top_p": 0.95,
+            "min_p": 0,
             "typical_p": 1,
             "cache_prompt": True,
         }

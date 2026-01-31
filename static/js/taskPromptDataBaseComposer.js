@@ -230,6 +230,32 @@ Just relax, keep calm, my friend. I will pay extra if you work hard! Have a good
 
 const promptsDataBaseComposer = {
 
+    "emotion, topic - plus": {
+        "order": {
+            "Topic extration": ["input"],
+            "Emotion analyzer": ["input"]
+        },
+        "outputTask":[
+            "Topic extration",
+            "Emotion analyzer"
+        ],
+        "input": [
+            "Emotion analyzer",
+            "Topic extration",
+        ],
+        "output": `======================
+==== test Analyze ====
+======================
+
+=== Emotion ===
+
+{[Emotion analyzer]}
+
+=== Topic ===
+
+{[Topic extration]}`
+    },
+
     "emotion, topic": {
         "input": [
             "Emotion analyzer",
@@ -304,9 +330,8 @@ const promptsDataBaseComposer = {
     },
 
     "relate - administrative divisions - são vicente - composer": {
-        "avoidDefaultInput": false,
 
-        "order":{
+        "order": {
             "add one type: municipality, neighborhood, street, or unknown": ["input"],
             "make correlations for each regional districts": [
                 "input",
@@ -321,7 +346,7 @@ const promptsDataBaseComposer = {
                 "relate - administrative divisions - são vicente - simple"
             ]
         },
-        "aaa":[
+        "outputTask":[
             "relate - administrative divisions - são vicente - v2"
         ],
         "input": [

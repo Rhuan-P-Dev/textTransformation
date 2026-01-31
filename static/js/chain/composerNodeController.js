@@ -1,39 +1,42 @@
-
-import { ServerController } from "../serverController.js"
-import { ChainController } from "./chainController.js"
 import { CloneController } from "../utils/clone.js"
-import { PreMadeCustomChainController } from "./preMadeCustomChainController.js"
 import { ChainNode } from "./chainNodeController.js"
-
-var Server
-var Chain
-var Clone
-var PreMadeCustomChain
-
-docReady(function(){
-
-    Server = new ServerController()
-    Chain = new ChainController()
-    Clone = new CloneController()
-    PreMadeCustomChain = new PreMadeCustomChainController()
-
-})
 
 export class ComposerNodeController {
 
     newComposerNode(element){
 
-        return new ComposerNode(undefined, element)
+        return new ComposerNode({
+            element
+        })
     
     }
 
 }
 
-export class ComposerNode {
+export class ComposerNode extends ChainNode{
+
+    constructor({
+        typeOfTask,
+        element,
+    } = {}){
+        super({
+            typeOfTask,
+            element
+        })
+    }
 
     init(){
 
+        const AFTER_BEFORE_STATS = {
+            previous: this.previous[0],
+            next: this.next[0],
+            previousNext: [this.next[0]],
+            nextPrevious: [this.previous[0]]
+        }
+
         this.styleInit()
+
+        this.defineTask()
 
         if(this.done()){
             this.styleFinish()
@@ -48,12 +51,6 @@ export class ComposerNode {
             this.checkOutputs()
         ){
 
-            if(this.element){
-
-                this.typeOfTask = Chain.getTypeOfTask(this.element)
-
-            }
-
             let core = this.getCore()
 
             // Only useful if the core.order exists
@@ -65,25 +62,23 @@ export class ComposerNode {
                 
                 let typeOfTask = core.input[index]
 
-                let newNode = new ChainNode(
+                //if it don't have element, special don't work
+                let newNode = new ChainNode({
                     typeOfTask,
-                    this.element
-                )
+                })
 
-                newNode.input_output = {
-                    value: ""
-                }
+                newNode.set("")
 
                 newNode.hiddenNode = true
-                newNode.runNextNodeInit = true
+                //newNode.runNextNodeInit = true
 
-                newNode.frozenTypeOfTask = typeOfTask
+                //newNode.frozenTypeOfTask = typeOfTask
 
-                newNode.callBackInitCustomFunctionsAfter.push(
-                    PreMadeCustomChain.customComplete
-                )
+                //newNode.callBackInitCustomFunctionsAfter.push(
+                    //PreMadeCustomChain.customComplete
+                //)
 
-                newNode.avoidDefaultInput = core.avoidDefaultInput
+                //newNode.avoidDefaultInput = core.avoidDefaultInput
 
                 if(!core.order){
 
@@ -103,13 +98,44 @@ export class ComposerNode {
 
             if(!core.order){return}
 
-            for (let index = 0; index < core.aaa.length; index++) {
-                let node = order[core.aaa[index]]
+            for (let index = 0; index < core.outputTask.length; index++) {
+
+                console.log("================= outputtask ======================")
+
+                let node = order[core.outputTask[index]]
+
+                console.log(node)
                 
                 node.next.push(this)
                 this.previous.push(node)
 
                 node.element = undefined
+
+                //const AFTER_BEFORE_STATS = {
+                //    previous: this.previous,
+                //    next: this.next,
+                //    previousNext: this.previous.next,
+                //    nextPrevious: this.next.previous
+                //}
+
+                this.next[0].onOutput(
+                    () => {
+
+                        console.log("========== DIRT FIX ===============")
+
+                        console.log(node)
+
+                        console.log(AFTER_BEFORE_STATS)
+
+                        console.log(AFTER_BEFORE_STATS.previous.next)
+
+                        AFTER_BEFORE_STATS.previous.next = AFTER_BEFORE_STATS.previousNext
+                        AFTER_BEFORE_STATS.next.previous = AFTER_BEFORE_STATS.nextPrevious
+
+                        console.log(AFTER_BEFORE_STATS.previous.next)
+                        console.log("=============  DONE!!! ======================")
+                    }
+                )
             }
 
             for ( const key in core.order ){
@@ -151,7 +177,8 @@ export class ComposerNode {
     }
 
     getCore(){
-        return Clone.recursiveCloneAttribute(promptsDataBaseComposer[this.typeOfTask])
+        // TODO - fix it!
+        return new CloneController().recursiveCloneAttribute(promptsDataBaseComposer[this.typeOfTask])
     }
 
     deleteHiddenNodes(){
@@ -240,70 +267,6 @@ export class ComposerNode {
 
     }
 
-    checkOutputs(){
-
-        for (let index = 0; index < this.previous.length; index++) {
-
-            let previous = this.previous[index]
-
-            if(!previous.isDone){
-                return false
-            }
-
-        }
-
-        return true
-
-    }
-
-    check(){
-
-        if(
-            Chain.getTypeOfTask(this.element) == "Type Of Task"
-        ){
-            return false
-        }
-
-        return true
-
-    }
-
-    isRunChainTrue(){
-        return runChain
-    }
-
-    styleInit(){
-
-        this.isDone = false
-
-        if(!this.styles){return}
-
-        if(this.element){
-            this.element.style.border = "3px solid lightcoral"
-        }
-
-        this.next.forEach(
-            (next) => {
-                next.styleInit()
-            }
-        )
-    }
-
-    styleCheckFail(){
-
-        if(!this.styles){return}
-
-        if(this.element){
-            this.element.style.border = "3px solid gray"
-        }
-
-        this.next.forEach(
-            (next) => {
-                next.styleCheckFail()
-            }
-        )
-    }
-
     styleFinish(){
 
         if(!this.tryOutput()){return}
@@ -326,36 +289,5 @@ export class ComposerNode {
         
 
     }
-
-    constructor(
-        typeOfTask,
-        element = undefined,
-    ){
-
-        this.typeOfTask = typeOfTask
-
-        if(element){
-
-            this.element = element
-            this.input_output = Chain.getOutputBlockChain(element)
-
-        }
-
-    }
-
-    next = []
-    previous = []
-
-    input_output = {
-        value: undefined
-    }
-
-    typeOfTask = undefined
-
-    styles = true
-
-    isDone = false
-
-
 
 }

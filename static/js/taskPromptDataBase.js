@@ -6,6 +6,11 @@ export class PromptsDataBaseController {
 
         let prompt = promptsDataBase[name]
 
+        if(!prompt){
+            console.error(`Prompt ${name} not found!`)
+            return "false"
+        }
+
         if(prompt.extend){
 
             let basePrompt = new CloneController().recursiveCloneAttribute(promptsDataBase[prompt.extend])
@@ -30,138 +35,149 @@ export class PromptsDataBaseController {
 
 export const promptsDataBase = {
 
+    "motion AI": [
+        {"role": "user", "content": `{[DATA]}
+
+Rewrite the input as a sentence that naturally describes what the input is saying. Please respond **ONLY** with the rewrite input.`},
+    ],
+
     "ask": [
-        {"role": "user", "content": `<input>{[DATA]}</input>`},
+        {"role": "user", "content": `{[DATA]}`},
     ],
 
     "to English": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Now, Translate the input to English. Please respond **ONLY** with the translated input.`},
     ],
+    "to Chinese": [
+        {"role": "user", "content": `{[DATA]}
+
+Now, Translate the input to Chinese. Please respond **ONLY** with the translated input.`},
+    ],
     "to PT-BR": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Now, Translate the input to PT-BR. Please respond **ONLY** with the translated input.`},
     ],
     "Fix gramatical errors": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
-Now, Fix all gramatical errors of the input. First give a detailed explanation about every fix and after give the fixed input.`},
+Now, Fix all grammatical errors of the input. First give a detailed explanation about every fix and after give the fixed input.`},
     ],
     "Emotion analyzer": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Now, Tell me what emotion the input conveys. Please respond to me in this **format**: emotion1, emotion2, emotion3, and so on... Please respond **ONLY** with the emotions.`},
     ],
 
     "Topic extration": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Now, Tell me the topics of input. Please respond to me in this **format**: topic1, topic2, topic3, and so on... Please respond **ONLY** with the topics.`},
     ],
 
     "Some definition": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Provide me with a definition of the input.`},
     ],
 
     "Some scientific definition": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Provide me with a scientific definition of the input.`},
     ],
 
     "Some religious definition": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Provide me with a religious definition of the input.`},
     ],
 
     "Some technology definition": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Provide me with a technology definition of the input.`},
     ],
 
     "Some overview definition": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Provide me with a overview definition of the input content.`},
     ],
 
     "10 things with similarity": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Give me the 10 things with similarity of the input.`},
     ],
     "Summary": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Now, Make a summary.`},
     ],
     "Summary v1": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Now, summarize the input, highlighting the most relevant topics. For example: **Key topic** brief introduction.`},
     ],
     "Summary v2": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Now, summarize the input, highlighting the most relevant topics. For example: **Key topic** brief introduction. After the summary explain deeply each topic.`},
     ],
 //https://www.reddit.com/r/LocalLLaMA/comments/1ftjbz3/shockingly_good_superintelligent_summarization/
 //https://www.reddit.com/user/custodiam99/
     "Summary v3": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Now, 1.) Analyze the input text and generate 5 essential questions that, when answered, capture the main points and core meaning of the text. 2.) When formulating your questions: a. Address the central theme or argument b. Identify key supporting ideas c. Highlight important facts or evidence d. Reveal the author's purpose or perspective e. Explore any significant implications or conclusions. 3.) Answer all of your generated questions one-by-one in detail.`},
     ],
     "Simplify this text": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Now, Simplify this input. Please respond **ONLY** with the simplified input.`},
     ],
 
     "Complex this text": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Now, Transform this input into a more complex one. Don't invent nonsensical things, just make small obvious assumptions, stay consistent with the input. Please respond **ONLY** with the transformed input. Don't forget to **FOLLOW** the style of the original input.`},
     ],
 
     "Complex this text - HARD": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Now, Transform this input into a more complex, expert, profound, detailed, and nuanced one. Don't invent nonsensical things, just make small obvious assumptions, stay consistent with the input. Please respond **ONLY** with the transformed input. Don't forget to **FOLLOW** the style of the original input.`},
     ],
 
     "Explain it with gradually": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Explain the input with gradually increasing complexity, up to five.`}
     ],
 
     "Invert the meaning": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 invert the meaning of this input. **ONLY** respond with inverted input.`}
     ],
 
     "to positive": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Now, Translate the input to a positive & afirmative. Please respond **ONLY** with the translated input.`},
     ],
 
     "analyze about this project": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 What you see in the <input>? I want a deep and neutral, unbiased, truthful analyze about this project.`},
     ],
 
     "re-write edit": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 # Edit Instruction Rewriter
 You are a professional edit instruction rewriter. Your task is to generate a precise, concise, and visually achievable professional-level edit instruction based on the user-provided instruction and the image to be edited.
@@ -222,7 +238,7 @@ Please strictly follow the rewriting rules below:
 }\`\`\` `}],
 
     "LTX-Video": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 You will construct your output based on my input. Based on my input, I want you to imagine a world lived in its entirety, with extreme details, colors, formats, etc. Your output should describe EVERYTHING that is VISIBLE, and nothing else.
 
@@ -238,14 +254,14 @@ Note any changes or sudden events`}
     ],
 
     "extract: streets & neighborhoods": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Extract ALL streets, neighborhoods, etc. from the input.
 Just output the list with the names. example: name1, name2, name3, name4...`}
     ],
 
     "são vicente sp - only": [
-    {"role": "user", "content": `<input>{[DATA]}</input>
+    {"role": "user", "content": `{[DATA]}
 
 I want you to clean **ALL** input, but you must follow these **guidelines** for a high-quality cleaning.
 
@@ -256,7 +272,7 @@ I want you to clean **ALL** input, but you must follow these **guidelines** for 
     ],
 
     "extract all names": [
-    {"role": "user", "content": `<input>{[DATA]}</input>
+    {"role": "user", "content": `{[DATA]}
 
 Ignore: common name (also called common noun).
 Extract ALL proper names
@@ -264,7 +280,7 @@ be short and efficient!`}
     ],
 
     "add one type: municipality, neighborhood, street, or unknown": [
-    {"role": "user", "content": `<input>{[DATA]}</input>
+    {"role": "user", "content": `{[DATA]}
 
 Your task is to assign one of these four categories to each name: municipality, neighborhood, street, or unknown.
 
@@ -287,7 +303,7 @@ NoIdea123 is unknown`}
     ],
 
     "make correlations for each regional districts": [
-    {"role": "user", "content": `<input>{[DATA]}</input>
+    {"role": "user", "content": `{[DATA]}
 
 Your goal is to identify and list regional districts (municipalities, neighborhoods, and streets) from the input.
 For each name in the <input>
@@ -305,7 +321,7 @@ Example output:
     ],
 
     "deduplicate": [
-    {"role": "user", "content": `<input>{[DATA]}</input>
+    {"role": "user", "content": `{[DATA]}
 
 I want you to deduplicate ALL, but you must follow these **guidelines** for a high-quality merge.
 
@@ -316,7 +332,7 @@ I want you to deduplicate ALL, but you must follow these **guidelines** for a hi
 4. Don't forget to **FOLLOW** the style of the input.`}],
 
     "extract events - são vicente": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 I want you to extract **ALL** events on são vicente from são paulo in <input>, you must follow these **guidelines**.
 
@@ -370,7 +386,7 @@ I want you to extract **ALL** events on são vicente from são paulo in <input>,
 3. Your response must be in English only.`}],
 
     "relate - administrative divisions - são vicente - low quality": [
-    {"role": "user", "content": `<input>{[DATA]}</input>
+    {"role": "user", "content": `{[DATA]}
 
 I want you to relate **ALL** input related with municipalitie são vicente from são paulo, but you must follow these **guidelines** for a high-quality relate.
 
@@ -449,7 +465,7 @@ Here a format example to guide you:
               - The Westview Community Center is located at 202 Cedar Street.`}],
 
     "relate - administrative divisions - são vicente - v2": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 ### Objective
 Extract **all** information from the provided \`<input>\` that concerns the municipality **São Vicente** (state of São Paulo) and organise it into a three‑level hierarchy — municipality → neighbourhood → street — while explicitly documenting **facts, events, context, and consequences** for each level.
@@ -559,7 +575,7 @@ Extract **all** information from the provided \`<input>\` that concerns the muni
 Follow these instructions precisely to generate a high‑quality, fully‑structured correlation of all São Vicente‑related information.`}],
 
         "relate - administrative divisions - são vicente - simple": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 I want you to relate **ALL** <input> related with municipalitie são vicente from são paulo, but you must follow these **guidelines** for a high-quality relate.
 
@@ -613,7 +629,7 @@ Here a format example to guide you:
 </municipalities>`}],
 
     "relate - administrative divisions - são vicente": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 I want you to relate **ALL** <input> related with municipalitie são vicente from são paulo, but you must follow these **guidelines** for a high-quality relate.
 
@@ -635,7 +651,7 @@ Here a format example to guide you:
 <?xml version="1.0" encoding="UTF-8"?> <municipalities> <municipality name="Exampleville"> <facts>Exampleville is known for its historic downtown district and vibrant cultural scene. The municipality has a population of 150,000 residents. It is home to the Exampleville University, a major educational institution.</facts> <neighborhoods> <neighborhood name="Downtown"> <facts>Downtown is the commercial and cultural hub of Exampleville. It hosts the annual Exampleville Festival every July.</facts> <streets> <street name="Main Street"> <facts>Main Street is lined with historic buildings and boutique shops. The Exampleville Art Museum is located at 456 Main Street.</facts> </street> <street name="Elm Street"> <facts>Elm Street is famous for its family-friendly parks and community garden. It connects to the Exampleville Central Library.</facts> </street> </streets> </neighborhood> <neighborhood name="Riverside"> <facts>Riverside is known for its scenic riverfront and outdoor activities. It has a growing tech sector with several startups.</facts> <streets> <street name="Riverfront Avenue"> <facts>Riverfront Avenue offers panoramic views of the Exampleville River. The Riverside Art Gallery is located at 789 Riverfront Avenue.</facts> </street> <street name="Pine Street"> <facts>Pine Street is a residential area with a strong emphasis on sustainability. It features a community garden and a local farmers’ market.</facts> </street> </streets> </neighborhood> </neighborhoods> </municipality> <municipality name="Greenfield"> <facts>Greenfield is a suburban municipality with a focus on technology and innovation. It has a population of 200,000 and is part of the Greenfield Tech Corridor.</facts> <neighborhoods> <neighborhood name="Eastside"> <facts>Eastside is a hub for startups and tech companies. It hosts the Greenfield Innovation Expo annually.</facts> <streets> <street name="Maple Lane"> <facts>Maple Lane is home to the Greenfield Tech Park. The Greenfield Innovation Center is located at 101 Maple Lane.</facts> </street> <street name="Oak Drive"> <facts>Oak Drive is a residential area with high-end housing. It connects to the Greenfield Business District.</facts> </street> </streets> </neighborhood> <neighborhood name="Westview"> <facts>Westview is a family-friendly neighborhood with strong community ties. It has the Westview Community Center and a public library.</facts> <streets> <street name="Hilltop Road"> <facts>Hilltop Road offers panoramic views of the city and mountains. It is popular for jogging and hiking.</facts> </street> <street name="Cedar Street"> <facts>Cedar Street hosts monthly cultural events and festivals. The Westview Community Center is located at 202 Cedar Street.</facts> </street> </streets> </neighborhood> </neighborhoods> </municipality> </municipalities>`}],
 
     "relate - administrative divisions": [
-    {"role": "user", "content": `<input>{[DATA]}</input>
+    {"role": "user", "content": `{[DATA]}
 
 I want you to relate **ALL** input, but you must follow these **guidelines** for a high-quality relate.
 
@@ -713,7 +729,7 @@ Here a format example to guide you:
               - The Westview Community Center is located at 202 Cedar Street.`}],
 
     "merge v1": [
-    {"role": "user", "content": `<input>{[DATA]}</input>
+    {"role": "user", "content": `{[DATA]}
 
 I want you to merge ALL inputs, but you must follow these **guidelines** for a high-quality merge.
 
@@ -765,9 +781,11 @@ Your response will follow this order:
     ],
 
     "best of judge": [
-        {"role": "user", "content": `<original input>{[ORIGINAL_DATA]}</original Input>
+        {"role": "user", "content": `{[ORIGINAL_DATA]}
 
-<original output>{[OUTPUT_DATA]}</original output>
+{[TASK_DATA]}
+
+{[OUTPUT_DATA]}
 
 Your response will follow this order:
 
@@ -781,39 +799,48 @@ Your response will follow this order:
     ],
 
     "try be best": [
-        {"role": "user", "content": `<original input>{[ORIGINAL_DATA]}</original Input>
+        {"role": "user", "content": `{[ORIGINAL_DATA]}
 
-<original output>{[OUTPUT_DATA]}</original output>
+{[TASK_DATA]}
+
+{[OUTPUT_DATA]}
 
 Your response will follow this order:
 
 # **Order**:
 1. Be critical, analytical, and proficient while following the steps.
-2. Identify the objective of the original input, Think step-by-step.
-3. Think if the output manage to achieve this objective.
-4. Make the score step-by-step, weight every aspect of the original input and the original output.
-5. Score the output based on how much the original output follow the original input, in a scale of 0 to 10.
-6. Based in your critical analyze make a better output to fix **ALL** flaws in the original output.
-7. If not, just respond with <complete>. and end your response. If yes, rewrite the output to be better. When you rewrite your better output, put between: '<better output></better output>'`}
+2. When you think, respond between '<think>...</think>'
+2.1 Identify the objective of the original input, Think step-by-step.
+2.2. Think if the original output output manage to achieve original input's objective.
+2.3 Make the score step-by-step, weight every aspect of the original input and the original output.
+2.4 Score the output based on how much the original output follow the original input, in a scale of 0 to 10.
+3. Based in your critical analyze make a better output to fix **ALL** flaws in the original output.
+4. When you output your response, respond between '<complete>...</complete>' and end your response.
+4.1. If you respond 'No' - then original output is flawless.
+4.2. If you respond the better original output - then original output have been improved.`}
     ],
 
     "try fix the unknown mistake": [
-        {"role": "user", "content": `<original input>{[ORIGINAL_DATA]}</original Input>
+        {"role": "user", "content": `{[ORIGINAL_DATA]}
 
-<original output>{[OUTPUT_DATA]}</original output>
+{[TASK_DATA]}
+
+{[OUTPUT_DATA]}
 
 I think something is missing/wrong of the original output. Your response will follow this order:
 
 # **Order**:
 1. Be critical, analytical, and proficient while following the steps.
 2. Think step-by-step to try find the mistake in the original output and fix it.
-3. When you output your response, respond between '<complete>...your output...</complete>' and end your response.`}
+3. When you output your response, respond between '<complete>...</complete>' and end your response.
+3.1 If you respond 'No' - then original output don't have mistakes.
+3.2 If you respond the fixed original output - then original output have been fixeds.`}
     ],
 
 
 
     "extract and analyze a news article": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 Explanation of this customized system of characteristics and sub-characteristics:
 There are basic characteristics, which begin with an exclamation mark (!), and these define the type of characteristic that applies to a municipality, neighborhood, or street.
@@ -1163,15 +1190,17 @@ You will think step-by-step to find key errors to another LLM re-write the origi
     ],
 
     "re-write": [
-        {"role": "user", "content": `<input>{[DATA]}</input>
+        {"role": "user", "content": `{[DATA]}
 
 You will use each adicitional note to re-write the <input>. Follow the instructions in each adicitional note. Just output the re-written input.`}
     ],
 
     "factory judges": [
-        {"role": "user", "content": `<original input>{[ORIGINAL_DATA]}</original Input>
+        {"role": "user", "content": `{[ORIGINAL_DATA]}
 
-<original output>{[OUTPUT_DATA]}</original output>
+{[TASK_DATA]}
+
+{[OUTPUT_DATA]}
 
 You will process the input following this exact order:
 
@@ -1190,9 +1219,9 @@ You will process the input following this exact order:
    - Consider completeness, accuracy, relevance, and adherence to instructions.
 
 4. **Answer Determination**:
-   - If the original response **does not follow** the instructions in the <original input>, output:
+   - If the original response **does not follow** the instructions in the original input, output:
      \`<answer>no</answer>\`
-   - If the original response **fully follows** the instructions in the <original input>, output:
+   - If the original response **fully follows** the instructions in the original input, output:
      \`<answer>yes</answer>\`
 
 5. **Additional Instruction (if needed)**:

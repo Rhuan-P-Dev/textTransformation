@@ -23,30 +23,6 @@ function replacer(text, targetText, newText){
     return text
 }
 
-function promptCleaner(prompt){
-    return replacer(prompt, "\\", "")
-}
-
-function removeThink(text){
-    return text.replace(/<think>[\s\S]*?<\/think>\n\n/g, "").replace(/<think>[\s\S]*?<\/think>\n/g, "")
-}
-
-function callBackCleaner(text){
-
-    text = replacer(text, "<input>", "")
-    text = replacer(text, "</input>", "")
-    text = replacer(text, /<input_\d+>|\<\/input_\d+>/g, "") // This pattern matches "<input_X>" and "</input_X>", where X is a number
-    text = replacer(text, "<output>", "")
-    text = replacer(text, "</output>", "")
-
-    text = removeThink(text)
-
-    text = removeGptOss(text)
-
-    return text
-}
-
-
 function randomInteger(min = 0, max = 1){
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
@@ -57,14 +33,4 @@ function randomUniqueID() {
 
 function rounds(number){
     return Math.floor(Math.log2(number))
-}
-
-const gptOssFinalToken = "<|start|>assistant<|channel|>final<|message|>"
-
-function removeGptOss(text){
-    if (text.indexOf(gptOssFinalToken) !== -1) {
-        return text.substring(text.indexOf(gptOssFinalToken) + gptOssFinalToken.length).trim();
-    }else{
-        return text
-    }
 }

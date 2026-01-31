@@ -1,3 +1,16 @@
+
+# adicinar nives de dificudade das tasks, e adicinar nives de modelos para usar modelos menores para task menores
+
+# adicionar nivesi de velocidade para cada modelo
+# adicinar niveis de temanho de input, e tamanho do output
+# adicinar tipos de taks para usar tipos de modelos para cada task
+
+# adicinar um 'reasoning' nativo para pensar
+
+# crie(?) uma esqueleto com varios pontos, e faça cada llm dizar sua versão, (verdade, falso)
+
+#uma factory: criar a result X juises votão sim ou não, se não tenta de novo? a marioria dos juizes dão feedback como nota?
+
 # 'cold next' - isso vai fazer que a llm responda o texto de forma 'fria', tipo: isso foi escrito por uma llm, blalalala
 
 #Rewrite the entire <input> adding the type of name: São Vicente (municipality), street X (street), Ilha Perdida (island), etc.
